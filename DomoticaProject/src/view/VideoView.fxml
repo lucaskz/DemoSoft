@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="485.0" prefWidth="692.0"
+	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+	fx:controller="controller.AudioController">
+	<children>
+		<Button  fx:id="multimediaButton1" layoutX="151.0" layoutY="223.0" mnemonicParsing="false"
+			prefHeight="51.0" prefWidth="116.0" text="Lista 1" onAction="#loadPlay1" />
+		<Button fx:id="multimediaButton2" layoutX="511.0" layoutY="75.0" mnemonicParsing="false"
+			prefHeight="51.0" prefWidth="116.0" text="Lista 2" onAction="#loadPlay2" />
+		<Button fx:id="multimediaButton3" layoutX="330.0" layoutY="75.0" mnemonicParsing="false"
+			prefHeight="51.0" prefWidth="116.0" text="Lista 3" onAction="#loadPlay3" />
+		<Button fx:id="multimediaButton4" layoutX="151.0" layoutY="75.0" mnemonicParsing="false"
+			prefHeight="51.0" prefWidth="116.0" text="Lista 4" onAction="#loadPlay4" />
+		<Button fx:id="multimediaButton5" layoutX="330.0" layoutY="223.0" mnemonicParsing="false"
+			prefHeight="51.0" prefWidth="116.0" text="Lista 5" onAction="#loadPlay5" />
+		<Button fx:id="multimediaButton6" layoutX="511.0" layoutY="223.0"
+			mnemonicParsing="false" onAction="#loadPlay6" prefHeight="51.0"
+			prefWidth="116.0" text="Lista 6" />
+	</children>
+</AnchorPane>

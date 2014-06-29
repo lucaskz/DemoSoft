@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="485.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <Button layoutX="151.0" layoutY="223.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
+      <Button layoutX="511.0" layoutY="75.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
+      <Button layoutX="330.0" layoutY="75.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
+      <Button layoutX="151.0" layoutY="75.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
+      <Button layoutX="330.0" layoutY="223.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
+      <Button fx:id="multimediaButton" layoutX="511.0" layoutY="223.0" mnemonicParsing="false" onAction="#loadScene" prefHeight="51.0" prefWidth="116.0" text="MultimediaButton" />
+   </children>
+</AnchorPane>

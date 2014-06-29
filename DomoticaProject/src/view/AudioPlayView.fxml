@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="507.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AudioPlayController">
+   <children>
+      <Pane fx:id="Tabla" layoutY="80.0" prefHeight="345.0" prefWidth="495.0">
+         <children>
+            <TableView fx:id="Tabla1" layoutX="14.0" layoutY="56.0" prefHeight="281.0" prefWidth="475.0">
+              <columns>
+                <TableColumn fx:id="Columna1" prefWidth="474.0" resizable="false" text="Canciones" />
+               
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Button fx:id="Siguiente" layoutX="52.0" layoutY="56.0" mnemonicParsing="false" onAction="#Siguiente" text="Siguiente">
+         <effect>
+            <DropShadow color="#008bf5" />
+         </effect></Button>
+      <Button fx:id="Estado" layoutX="145.0" layoutY="55.0" mnemonicParsing="false" onAction="#CambiarEstado" text="Pause">
+         <effect>
+            <DropShadow color="#00b1e5" />
+         </effect></Button>
+      <ProgressBar fx:id="progresoCancion" layoutX="226.0" layoutY="50.0" prefHeight="25.0" prefWidth="254.0" progress="0.0">
+         <effect>
+            <InnerShadow />
+         </effect></ProgressBar>
+      <Label fx:id="pista" layoutX="52.0" layoutY="14.0" prefHeight="17.0" prefWidth="377.0" text="Title" />
+      <Button fx:id="Back" defaultButton="true" layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="88.0" text="Atras">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>
