@@ -1,0 +1,188 @@
+/*******************************************************************************
+ *                                                                             *
+ * Botones                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+
+.w8-button{
+	
+	-fx-border-style:null;
+	-fx-font-size: 13;
+	-fx-font-weight: bold;
+	-fx-cursor: hand   ;
+	-fx-opacity:0.9;
+	-fx-background-radius: 0;
+	-fx-pref-height:120;
+	-fx-pref-width:152;
+	
+	-fx-background-repeat: no-repeat;
+    -fx-background-position: center;     
+	
+}
+
+.w8-button:hover{
+	-fx-opacity: 1;
+	-fx-border-color: null ,null,null, white;
+	-fx-border-style:solid;
+	-fx-border-width:0,0,2;
+}
+
+.w8-button:active{
+	-fx-background-color: #191919 !important;
+	-fx-text-fill: white !important;
+}
+
+.width{
+	-fx-pref-width:310;
+}
+
+
+
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * colores                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+
+.green{
+	-fx-background-color: #009900 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+}
+
+.red{
+	-fx-background-color: #d9522c radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+}
+
+.lightblue{
+	 -fx-background-color: #2d87ef radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); 
+}
+
+.yellow{
+	-fx-background-color: #fba919 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); 
+}
+
+.violet {
+	 -fx-background-color: #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+}
+
+.grey {
+	 -fx-background-color: #474747 #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+}
+
+.pink{
+	 -fx-background-color: #ae193e #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+}
+
+.d-blue{
+	-fx-background-color: #0099ab radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+}
+
+#iphone-example {
+    -fx-background-color: 
+        #a6b5c9,
+        linear-gradient(#303842 0%, #3e5577 20%, #375074 100%),
+        linear-gradient(#768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+}
+
+
+/*******************************************************************************
+ *                                                                             *
+ * iconos                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+
+.lamp{
+	-fx-background-image:url("../images/light.png");
+	-fx-background-size: 35 35;
+	-fx-background-position: 10 75;
+}
+
+.weather{
+	-fx-background-image:url("../images/weather_1.png");
+	-fx-background-size: 60 60;
+	-fx-background-position: 30 25;	
+}
+
+.settings{
+    -fx-background-image:url("../images/sett.png");
+	-fx-background-size: 80 80;
+	-fx-background-position: center;	
+}
+
+.multimedia{
+	-fx-background-image:url("../images/itunes.png");
+	-fx-background-size: 80 80;
+	-fx-background-position: center;
+}
+
+.play{
+	-fx-background-image:url("../images/play.png");
+	-fx-background-size: 80 80;
+	-fx-background-position: center;
+}
+
+.pictures{
+	-fx-background-image:url("../images/pictures.png");
+	-fx-background-size: 80 80;
+	-fx-background-position: center;	
+}
+
+.calendar{
+	-fx-background-image:url("../images/calendar.png");
+	-fx-background-size: 60 60;
+	-fx-background-position: 30 25;		
+}
+
+.gps{
+    -fx-background-image:url("../images/gps.png");
+	-fx-background-size: 80 80;
+	-fx-background-position: center;	
+}
+
+.voicemaill{
+    -fx-background-image:url("../images/voicemaill.png");
+	-fx-background-size: 60 60;
+	-fx-background-position: 30 25;	
+}
+
+.home{
+	-fx-background-image:url("../images/home.png");
+	-fx-background-size: 60 60;
+	-fx-background-position: 30 25;	
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Letras                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+
+
+.header{
+    -fx-font-size: 42pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white ;
+}
+
+.item-title{
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: black;
+     
+}
+
+.tab-button{
+	-fx-pref-width:120;
+	-fx-background-size: 45 45;
+	-fx-pref-height:100;
+	-fx-background-position:center;
+	-fx-text-fill: gray  ;
+	-fx-alignment: bottom-center ; 	
+	-fx-background-color:  #191919 !important;
+}
+
+.tab:active{
+	-fx-background-color: #474747 #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+}
