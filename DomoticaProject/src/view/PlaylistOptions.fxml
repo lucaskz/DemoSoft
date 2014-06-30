@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="playlist_options" layoutX="973.0" prefHeight="800.0" prefWidth="188.0" styleClass="yellow">
+   <children>
+      <ToggleButton layoutX="52.0" layoutY="321.0" mnemonicParsing="false" text="ToggleButton" />
+      <DatePicker layoutX="10.0" layoutY="190.0" />
+      <ToggleButton layoutX="73.0" layoutY="593.0" mnemonicParsing="false" styleClass="monitor" text="4" />
+      <ToggleButton layoutX="73.0" layoutY="527.0" mnemonicParsing="false" styleClass="monitor" text="3" />
+      <ToggleButton layoutX="73.0" layoutY="392.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="42.0" styleClass="monitor" text="1" />
+      <ToggleButton layoutX="73.0" layoutY="459.0" mnemonicParsing="false" styleClass="monitor" text="2" />
+   </children>	
+</AnchorPane>
+
