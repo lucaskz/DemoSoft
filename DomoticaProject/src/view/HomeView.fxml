@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="932.0" fitWidth="1280.0" preserveRatio="true">
          <image>
-            <Image url="@../../resource/images/bg.png" />
+            <Image url="@../../resources/images/bg.png" />
          </image>
       </ImageView>
       <Label layoutX="124.0" layoutY="109.0" style="-fx-font-size: 60;" styleClass="header" text="Home" />
