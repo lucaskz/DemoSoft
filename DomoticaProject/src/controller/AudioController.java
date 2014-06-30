@@ -3,100 +3,42 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.Main;
-import model.Cancion;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import application.Main;
 
 public class AudioController implements Initializable {
 
+	
 	private Main mainApp;
 
 	@FXML
-	private TableView<Cancion> Tabla1;
-	@FXML
-	private TableColumn<Cancion, String> Columna1;
-	@FXML
-	private TableColumn<Cancion, String> Columna2;
-
-	@FXML
-	private Button multimediaButton1;
-	@FXML
-	private Button multimediaButton2;
-	@FXML
-	private Button multimediaButton3;
-	@FXML
-	private Button multimediaButton4;
-	@FXML
-	private Button multimediaButton5;
-	@FXML
 	private Button multimediaButton6;
-
-	ObservableList<Cancion> canciones = FXCollections.observableArrayList();
-
-	public void inicializarTablaMusica() {
-
-		Tabla1.setItems(canciones);
-	}
+	
+	@FXML
+	private AnchorPane content;
+	
+	@FXML
+	private AnchorPane menuBar;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		Button audio = (Button) menuBar.lookup("#audio");
+		audio.setStyle("-fx-background-color: #474747 #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%)");
 
 	}
-
-	public void loadPlay1(ActionEvent event) {
-
-		this.getMainApp().changeScene(
-				"Multimedia",
-				"/Users//MatiasBarrera/Musica/"
-						+ multimediaButton1.getText().toString());
+	
+	@FXML
+	public void loadPlaylist(ActionEvent event) {
+	
+		content.getChildren().clear();
+	
 	}
 
-	public void loadPlay2(ActionEvent event) {
-
-		this.getMainApp().changeScene(
-				"Multimedia",
-				"/Users/MatiasBarrera/Musica/"
-						+ multimediaButton2.getText().toString());
-	}
-
-	public void loadPlay3(ActionEvent event) {
-
-		this.getMainApp().changeScene(
-				"Multimedia",
-				"/Users//MatiasBarrera/Musica/"
-						+ multimediaButton3.getText().toString());
-	}
-
-	public void loadPlay4(ActionEvent event) {
-
-		this.getMainApp().changeScene(
-				"Multimedia",
-				"/Users//MatiasBarrera/Musica/"
-						+ multimediaButton4.getText().toString());
-	}
-
-	public void loadPlay5(ActionEvent event) {
-
-		this.getMainApp().changeScene(
-				"Multimedia",
-				"/Users//MatiasBarrera/Musica/"
-						+ multimediaButton5.getText().toString());
-	}
-
-	public void loadPlay6(ActionEvent event) {
-
-		this.getMainApp().changeScene(
-				"Multimedia",
-				"/Users//MatiasBarrera/Musica/"
-						+ multimediaButton6.getText().toString());
-	}
 
 	public Main getMainApp() {
 		return mainApp;
@@ -107,3 +49,4 @@ public class AudioController implements Initializable {
 	}
 
 }
+

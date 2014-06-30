@@ -1,17 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="485.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
-      <Button layoutX="151.0" layoutY="223.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
-      <Button layoutX="511.0" layoutY="75.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
-      <Button layoutX="330.0" layoutY="75.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
-      <Button layoutX="151.0" layoutY="75.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
-      <Button layoutX="330.0" layoutY="223.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="116.0" text="Button" />
-      <Button fx:id="multimediaButton" layoutX="511.0" layoutY="223.0" mnemonicParsing="false" onAction="#loadScene" prefHeight="51.0" prefWidth="116.0" text="MultimediaButton" />
+      <Pane pickOnBounds="false" prefHeight="800.0" prefWidth="1280.0" styleClass="item-title">
+         <children>
+            <ImageView fitHeight="932.0" fitWidth="1280.0" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/bg.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="124.0" layoutY="109.0" style="-fx-font-size: 60;" styleClass="header" text="Home" />
+            <Button layoutX="128.0" layoutY="266.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="310.0">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="lightblue" />
+                  <String fx:value="width" />
+                  <String fx:value="lamp" />
+               </styleClass>
+            </Button>
+            <Button layoutX="128.0" layoutY="392.0" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="violet" />
+               </styleClass>
+            </Button>
+            <Button layoutX="286.0" layoutY="392.0" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="yellow" />
+                  <String fx:value="gps" />
+               </styleClass>
+            </Button>
+            <Button layoutX="525.0" layoutY="266.0" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="width" />
+                  <String fx:value="lightblue" />
+                  <String fx:value="weather" />
+               </styleClass>
+            </Button>
+            <Button layoutX="128.0" layoutY="519.0" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="width" />
+                  <String fx:value="red" />
+                  <String fx:value="calendar" />
+               </styleClass>
+            </Button>
+            <Button fx:id="multimediaButton" layoutX="683.0" layoutY="392.0" mnemonicParsing="false" onAction="#loadScene">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="violet" />
+                  <String fx:value="multimedia" />
+               </styleClass>
+            </Button>
+            <Button layoutX="525.0" layoutY="392.0" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="lightblue" />
+                  <String fx:value="pictures" />
+               </styleClass>
+            </Button>
+            <Button layoutX="910.0" layoutY="266.0" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="width" />
+                  <String fx:value="d-blue" />
+                  <String fx:value="voicemaill" />
+               </styleClass>
+            </Button>
+            <Button layoutX="525.0" layoutY="519.0" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="yellow" />
+                  <String fx:value="play" />
+               </styleClass>
+            </Button>
+            <Button layoutX="683.0" layoutY="519.0" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="w8-button" />
+                  <String fx:value="grey" />
+                  <String fx:value="settings" />
+               </styleClass>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

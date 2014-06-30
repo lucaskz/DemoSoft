@@ -3,7 +3,7 @@ package application;
 import java.util.List;
 
 import controller.MainController;
-import controller.MultimediaController;
+import controller.AudioController;
 import controller.AudioPlayController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -43,7 +43,8 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/"
 					+ view + "View.fxml"));
 
-			
+			Class<?> myContainerClass= Class.forName("javafx.scene.layout."+container);
+			Object myContainer = myContainerClass.cast(loader.load());
 			
 
 			switch (view+"Controller") {
@@ -52,8 +53,8 @@ public class Main extends Application {
 				controllerMain.setMainApp(this);
 				break;
 			
-			case "MultimediaController":
-				MultimediaController controllerMultimedia = (MultimediaController) loader.getController();			
+			case "AudioController":
+				AudioController controllerMultimedia = (AudioController) loader.getController();			
 				controllerMultimedia.setMainApp(this);
 				break;
 			case "PlayListController":
@@ -67,8 +68,7 @@ public class Main extends Application {
 				break;
 			}
 			
-			Class<?> myContainerClass= Class.forName("javafx.scene.layout."+container);
-			Object myContainer = myContainerClass.cast(loader.load());
+
 					
 			
 			Scene scene = new Scene((Parent) myContainer);

@@ -31,7 +31,7 @@ public class MainController implements Initializable {
 	public void loadScene(ActionEvent event) {
 	
 		
-		this.getMainApp().changeScene("Multimedia", "AnchorPane");
+		this.getMainApp().changeScene("Audio", "AnchorPane");
 	}
 
 	public Main getMainApp() {
