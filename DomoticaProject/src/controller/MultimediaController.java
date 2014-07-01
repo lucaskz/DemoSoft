@@ -18,7 +18,17 @@ public class MultimediaController implements Initializable {
 	
 	private Main mainApp;
 
-
+    @FXML
+    private Button video;
+    
+    @FXML
+    private Button picture;
+    
+    @FXML
+    private Button home;
+    
+    @FXML
+    private Button audio;
 	
 	@FXML
 	private AnchorPane content;
@@ -30,29 +40,7 @@ public class MultimediaController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) { 
 		System.out.println("Initialize");
 		// TODO Auto-generated method stub
-		Button audio = (Button) menuBar.lookup("#audio");
-		audio.setStyle("-fx-background-color: #474747 #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);");
-		Button home = (Button) menuBar.lookup("#home");
-		home.setStyle("-fx-background-color: #191919 !important;");
-		Button pictures = (Button) menuBar.lookup("#pictures");
-		pictures.setStyle("-fx-background-color: #191919 !important;");
-		Button videos = (Button) menuBar.lookup("#videos");
-		videos.setStyle("-fx-background-color: #191919 !important;"); 
-		try {
-			
-			 URL url = getClass().getResource("/view/PlayListed.fxml");
-			 FXMLLoader fxmlloader = new FXMLLoader();
-			 fxmlloader.setLocation(url);
-			 fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
-			 content.getChildren().clear();
-			 content.getChildren().add( fxmlloader.load(url.openStream()));
-			            // here we go
-			    ((Audio2Controller)fxmlloader.getController()).setContent(content);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 
 	}
 	
@@ -61,7 +49,7 @@ public class MultimediaController implements Initializable {
 		content.getChildren().clear();
 		try {
 			
-			 URL url = getClass().getResource("/view/PlaylistContent.fxml");
+			 URL url = getClass().getResource("/view/Audio_PlaylistContent.fxml");
 			 FXMLLoader fxmlloader = new FXMLLoader();
 			 fxmlloader.setLocation(url);
 			 fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -75,6 +63,92 @@ public class MultimediaController implements Initializable {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@FXML
+	public void loadPicture(ActionEvent event){
+		Button audio = (Button) menuBar.lookup("#audio");
+		audio.setStyle("-fx-background-color: #191919 !important;");
+		Button home = (Button) menuBar.lookup("#home");
+		home.setStyle("-fx-background-color: #191919 !important;");
+		Button picture = (Button) menuBar.lookup("#picture");
+		picture.setStyle("-fx-background-color: #474747 #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%)");
+		Button video = (Button) menuBar.lookup("#video");
+		video.setStyle("-fx-background-color: #191919 !important;"); 
+		try {
+			
+			 URL url = getClass().getResource("/view/Picture_PictureList.fxml");
+			 FXMLLoader fxmlloader = new FXMLLoader();
+			 fxmlloader.setLocation(url);
+			 fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
+			 content.getChildren().clear();
+			 content.getChildren().add( fxmlloader.load(url.openStream()));
+			            // here we go
+			    ((Picture1Controller)fxmlloader.getController()).setContent(content);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void loadVideo(ActionEvent event){
+		Button audio = (Button) menuBar.lookup("#audio");
+		audio.setStyle("-fx-background-color:  #191919 !important;");
+		Button home = (Button) menuBar.lookup("#home");
+		home.setStyle("-fx-background-color: #191919 !important;");
+		Button picture = (Button) menuBar.lookup("#picture");
+		picture.setStyle("-fx-background-color: #191919 !important;");
+		Button video = (Button) menuBar.lookup("#video");
+		video.setStyle("-fx-background-color:  #474747 #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);"); 
+		try {
+			
+			 URL url = getClass().getResource("/view/Video_VideoList.fxml");
+			 FXMLLoader fxmlloader = new FXMLLoader();
+			 fxmlloader.setLocation(url);
+			 fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
+			 content.getChildren().clear();
+			 content.getChildren().add( fxmlloader.load(url.openStream()));
+			            // here we go
+			    ((Video1Controller)fxmlloader.getController()).setContent(content);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	private void loadHome(ActionEvent event){
+		this.getMainApp().changeScene("Main","Main", "AnchorPane");
+	}
+	
+	@FXML
+	public void loadAudio(ActionEvent event){
+		Button audio = (Button) menuBar.lookup("#audio");
+		audio.setStyle("-fx-background-color: #474747 #5b39b6 radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);");
+		Button home = (Button) menuBar.lookup("#home");
+		home.setStyle("-fx-background-color: #191919 !important;");
+		Button picture = (Button) menuBar.lookup("#picture");
+		picture.setStyle("-fx-background-color: #191919 !important;");
+		Button video = (Button) menuBar.lookup("#video");
+		video.setStyle("-fx-background-color: #191919 !important;"); 
+		try {
+			
+			 URL url = getClass().getResource("/view/Audio_PlayListed.fxml");
+			 FXMLLoader fxmlloader = new FXMLLoader();
+			 fxmlloader.setLocation(url);
+			 fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
+			 content.getChildren().clear();
+			 content.getChildren().add( fxmlloader.load(url.openStream()));
+			            // here we go
+			    ((Audio2Controller)fxmlloader.getController()).setContent(content);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

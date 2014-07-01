@@ -56,14 +56,14 @@
                   <String fx:value="calendar" />
                </styleClass>
             </Button>
-            <Button fx:id="multimediaButton" layoutX="683.0" layoutY="392.0" mnemonicParsing="false" onAction="#loadScene">
+            <Button fx:id="audio" layoutX="683.0" layoutY="392.0" mnemonicParsing="false" onAction="#loadAudioScene">
                <styleClass>
                   <String fx:value="w8-button" />
                   <String fx:value="violet" />
                   <String fx:value="multimedia" />
                </styleClass>
             </Button>
-            <Button layoutX="525.0" layoutY="392.0" mnemonicParsing="false">
+            <Button fx:id="picture" layoutX="525.0" layoutY="392.0" mnemonicParsing="false" onAction="#loadPictureScene">
                <styleClass>
                   <String fx:value="w8-button" />
                   <String fx:value="lightblue" />
@@ -78,7 +78,7 @@
                   <String fx:value="voicemaill" />
                </styleClass>
             </Button>
-            <Button layoutX="525.0" layoutY="519.0" mnemonicParsing="false">
+            <Button fx:id="video" layoutX="525.0" layoutY="519.0" mnemonicParsing="false" onAction="#loadVideoScene">
                <styleClass>
                   <String fx:value="w8-button" />
                   <String fx:value="yellow" />

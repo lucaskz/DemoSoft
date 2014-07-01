@@ -20,7 +20,13 @@ public class MainController implements Initializable {
 	private Main mainApp;
 
 	@FXML
-	private Button multimediaButton;
+	private Button audio;
+	
+	@FXML
+	private Button video;
+	
+	@FXML
+	private Button picture;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -28,10 +34,18 @@ public class MainController implements Initializable {
 
 	}
 
-	public void loadScene(ActionEvent event) {
+	public void loadAudioScene(ActionEvent event) {
 	
 		
-		this.getMainApp().changeScene("Multimedia", "AnchorPane");
+		this.getMainApp().changeScene("Audio","Multimedia", "AnchorPane");
+	}
+	
+	public void loadVideoScene(ActionEvent event){
+		this.getMainApp().changeScene("Video","Multimedia", "AnchorPane");
+	}
+	
+	public void loadPictureScene(ActionEvent event){
+		this.getMainApp().changeScene("Picture","Multimedia", "AnchorPane");
 	}
 
 	public Main getMainApp() {

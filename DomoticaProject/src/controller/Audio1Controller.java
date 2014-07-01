@@ -43,7 +43,7 @@ public class Audio1Controller implements Initializable {
 		content.getChildren().clear();
 		try {
 			
-			 URL url = getClass().getResource("/view/PlayListed.fxml");
+			 URL url = getClass().getResource("/view/Audio_PlayListed.fxml");
 			 FXMLLoader fxmlloader = new FXMLLoader();
 			 fxmlloader.setLocation(url);
 			 fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());

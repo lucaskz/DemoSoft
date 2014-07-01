@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="playlist_options" layoutX="973.0" prefHeight="800.0" prefWidth="188.0" styleClass="yellow">
+<AnchorPane fx:id="playlist_options" layoutX="973.0" prefHeight="800.0" prefWidth="188.0" styleClass="yellow" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
       <ToggleButton layoutX="52.0" layoutY="321.0" mnemonicParsing="false" text="ToggleButton" />
       <DatePicker layoutX="10.0" layoutY="190.0" />

@@ -37,7 +37,7 @@ public class Main extends Application {
 		}
 	}
 
-	public void changeScene(String view, String container) {
+	public void changeScene(String controller,String view, String container) {
 		try {
 
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/"
@@ -47,16 +47,27 @@ public class Main extends Application {
 			Object myContainer = myContainerClass.cast(loader.load());
 			
 
-			switch (view+"Controller") {
+			switch (controller+"Controller") {
 			case "MainController":
 				MainController controllerMain = (MainController) loader.getController();
 				controllerMain.setMainApp(this);
 				break;
 			
-			case "MultimediaController":
-				MultimediaController controllerMultimedia = (MultimediaController) loader.getController();			
-				controllerMultimedia.setMainApp(this);
+			case "AudioController":
+				MultimediaController controllerAudio = (MultimediaController) loader.getController();	
+				controllerAudio.setMainApp(this);
+				controllerAudio.loadAudio(null);
 				break;
+			case "VideoController":
+				MultimediaController controllerVideo = (MultimediaController) loader.getController();	
+				controllerVideo.setMainApp(this);
+				controllerVideo.loadVideo(null);
+				break;
+			case "PictureController":
+				MultimediaController controllerPicture = (MultimediaController) loader.getController();	
+				controllerPicture.setMainApp(this);
+				controllerPicture.loadPicture(null);
+				break;	
 			case "PlayListController":
 				final List<String> params = getParameters().getRaw();
 				AudioPlayController controllerPlay = (AudioPlayController) loader
