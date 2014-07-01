@@ -30,6 +30,11 @@ public class Audio1Controller implements Initializable {
 	public void setContent(AnchorPane content){
 		this.content=content;
 	}
+	 
+
+	/**
+	 *  Controlador encargado de mostrar los temas de las listas de una playlist seleccionada  */ 
+	
 	
 
 	

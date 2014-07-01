@@ -32,7 +32,8 @@ public class Audio2Controller implements Initializable {
 		this.content=content;
 	}
 	
-
+	/**
+	 *  Controlador encargado de mostrar las playlist disponibles  */ 
 	
 	@FXML
 	public void loadPlaylist(ActionEvent event) {	
