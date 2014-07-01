@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="playlist_content" layoutY="-1.0" prefHeight="722.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlaylistContent">
+<AnchorPane fx:id="playlist_content" layoutY="-1.0" prefHeight="722.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.subController">
    <children>
       <Label layoutX="320.0" layoutY="90.0" styleClass="item-title" text="Nombre Playlist" />
       <ListView layoutY="266.0" prefHeight="456.0" prefWidth="973.0" />

@@ -20,6 +20,9 @@ public class subController implements Initializable {
 	@FXML
 	private Button button_back;
 	
+	@FXML
+	private AnchorPane playlist_content;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 	}
