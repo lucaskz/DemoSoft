@@ -44,26 +44,7 @@ public class MultimediaController implements Initializable {
 
 	}
 	
-	@FXML
-	public void loadPlaylist(ActionEvent event) {	
-		content.getChildren().clear();
-		try {
-			
-			 URL url = getClass().getResource("/view/Audio_PlaylistContent.fxml");
-			 FXMLLoader fxmlloader = new FXMLLoader();
-			 fxmlloader.setLocation(url);
-			 fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
-			 content.getChildren().clear();
-			 content.getChildren().add( fxmlloader.load(url.openStream()));
-			            // here we go
-			    ((Audio1Controller)fxmlloader.getController()).setContent(content);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+	
 	
 	@FXML
 	public void loadPicture(ActionEvent event){
