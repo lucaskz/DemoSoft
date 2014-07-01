@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import application.Main;
 
-public class AudioController implements Initializable {
+public class MultimediaController implements Initializable {
 
 	
 	private Main mainApp;
@@ -27,7 +27,7 @@ public class AudioController implements Initializable {
 	private AnchorPane menuBar;
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) { /*
+	public void initialize(URL arg0, ResourceBundle arg1) { 
 		System.out.println("Initialize");
 		// TODO Auto-generated method stub
 		Button audio = (Button) menuBar.lookup("#audio");
@@ -37,7 +37,7 @@ public class AudioController implements Initializable {
 		Button pictures = (Button) menuBar.lookup("#pictures");
 		pictures.setStyle("-fx-background-color: #191919 !important;");
 		Button videos = (Button) menuBar.lookup("#videos");
-		videos.setStyle("-fx-background-color: #191919 !important;"); */
+		videos.setStyle("-fx-background-color: #191919 !important;"); 
 		try {
 			
 			 URL url = getClass().getResource("/view/PlayListed.fxml");
@@ -47,7 +47,7 @@ public class AudioController implements Initializable {
 			 content.getChildren().clear();
 			 content.getChildren().add( fxmlloader.load(url.openStream()));
 			            // here we go
-			    ((subController2)fxmlloader.getController()).setContent(content);
+			    ((Audio2Controller)fxmlloader.getController()).setContent(content);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -68,7 +68,7 @@ public class AudioController implements Initializable {
 			 content.getChildren().clear();
 			 content.getChildren().add( fxmlloader.load(url.openStream()));
 			            // here we go
-			    ((subController)fxmlloader.getController()).setContent(content);
+			    ((Audio1Controller)fxmlloader.getController()).setContent(content);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

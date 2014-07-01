@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="485.0" prefWidth="692.0"
 	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-	fx:controller="controller.AudioController_jorge">
+	fx:controller="controller.MultimediaController_jorge">
 	<children>
 		<Button  fx:id="multimediaButton1" layoutX="151.0" layoutY="223.0" mnemonicParsing="false"
 			prefHeight="51.0" prefWidth="116.0" text="Lista 1" onAction="#loadPlay1" />

@@ -3,7 +3,7 @@ package application;
 import java.util.List;
 
 import controller.MainController;
-import controller.AudioController;
+import controller.MultimediaController;
 import controller.AudioPlayController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -53,8 +53,8 @@ public class Main extends Application {
 				controllerMain.setMainApp(this);
 				break;
 			
-			case "AudioController":
-				AudioController controllerMultimedia = (AudioController) loader.getController();			
+			case "MultimediaController":
+				MultimediaController controllerMultimedia = (MultimediaController) loader.getController();			
 				controllerMultimedia.setMainApp(this);
 				break;
 			case "PlayListController":

@@ -12,16 +12,17 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-public class subController implements Initializable {
+public class Audio2Controller implements Initializable {
 
 	@FXML
 	private AnchorPane content;
 		
 	@FXML
-	private Button button_back;
+	private AnchorPane listado;
 	
 	@FXML
-	private AnchorPane playlist_content;
+	private Button play;
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -34,24 +35,24 @@ public class subController implements Initializable {
 
 	
 	@FXML
-	public void backMenu(ActionEvent event) {		
+	public void loadPlaylist(ActionEvent event) {	
 		content.getChildren().clear();
 		try {
 			
-			 URL url = getClass().getResource("/view/PlayListed.fxml");
+			 URL url = getClass().getResource("/view/PlaylistContent.fxml");
 			 FXMLLoader fxmlloader = new FXMLLoader();
 			 fxmlloader.setLocation(url);
 			 fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
 			 content.getChildren().clear();
 			 content.getChildren().add( fxmlloader.load(url.openStream()));
 			            // here we go
-			    ((subController2)fxmlloader.getController()).setContent(content);
+			    ((Audio1Controller)fxmlloader.getController()).setContent(content);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		
 	}
 	
 
