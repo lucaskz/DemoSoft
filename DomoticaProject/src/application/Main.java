@@ -2,6 +2,7 @@ package application;
 
 import java.util.List;
 
+import application.Terminal.TerminalScreen;
 import controller.MainController;
 import controller.MultimediaController;
 import controller.AudioPlayController;
@@ -15,9 +16,19 @@ import javafx.scene.layout.AnchorPane;
 public class Main extends Application {
 
 	private Stage primaryStage;
+	private Stage primaryStage2;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			
+			TerminalScreen t1= new TerminalScreen();
+			TerminalScreen t2= new TerminalScreen();
+			TerminalScreen t3= new TerminalScreen();
+			TerminalScreen t4= new TerminalScreen();
+	
+		//	t1.start(primaryStage2);
+			
+			
 			FXMLLoader loader = new FXMLLoader(
 					Main.class.getResource("/view/MainView.fxml"));
 
