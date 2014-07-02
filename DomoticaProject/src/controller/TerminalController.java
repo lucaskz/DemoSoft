@@ -27,52 +27,30 @@ public class TerminalController implements Initializable {
 	private Pane contenido4;
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-		this.startTerminal1();
-		this.startTerminal2();
-
-
-
+	public void initialize(URL location, ResourceBundle resources) {		
+		this.startTerminal(contenido1,1);
+		this.startTerminal(contenido2,2);
+		this.startTerminal(contenido3,3);
+		this.startTerminal(contenido4,4);
 	}
 
-	private void startTerminal2() {
+	private void startTerminal(Pane content,int terminal) {
 		URL url = getClass().getResource("/view/SubTerminalView.fxml");
 		FXMLLoader fxmlloader = new FXMLLoader();
 		fxmlloader.setLocation(url);
 		fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
-		contenido2.getChildren().clear();
+		content.getChildren().clear();
 		try {
-			contenido2.getChildren().add(fxmlloader.load(url.openStream()));
+			content.getChildren().add(fxmlloader.load(url.openStream()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// here we go
 		((SubTerminalController) fxmlloader.getController())
-				.setContenido(contenido2);
-		TerminalScreen.setTerminal2((SubTerminalController) fxmlloader
-				.getController());
-		
-	}
-
-	private void startTerminal1() {
-		URL url = getClass().getResource("/view/SubTerminalView.fxml");
-		FXMLLoader fxmlloader = new FXMLLoader();
-		fxmlloader.setLocation(url);
-		fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
-		contenido1.getChildren().clear();
-		try {
-			contenido1.getChildren().add(fxmlloader.load(url.openStream()));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// here we go
-		((SubTerminalController) fxmlloader.getController())
-				.setContenido(contenido1);
-		TerminalScreen.setTerminal1((SubTerminalController) fxmlloader
-				.getController());
+				.setContenido(content);
+		TerminalScreen.setTerminal((SubTerminalController) fxmlloader
+				.getController(),terminal);
 		
 	}
 

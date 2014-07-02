@@ -95,10 +95,31 @@ public class Terminal {
 			//terminal2.AgregarBoton();
 			terminal1.AgregarBoton();
 			terminal2.AgregarBoton();
+			terminal3.AgregarBoton();
+			terminal4.AgregarBoton();
 		}
 
-		public static void insetarBoton2() {
-			terminal2.AgregarBoton();
+
+
+		public static void setTerminal(SubTerminalController controller,
+				int terminal) {
+			switch (terminal) {
+			case 1: 
+				terminal1=controller;				
+				break;
+			case 2:
+				terminal2=controller;
+				break;
+			case 3:
+				terminal3=controller;
+				break;
+			case 4:
+				terminal4=controller;
+				break;
+
+			default:
+				break;
+			}
 			
 		}
 		
