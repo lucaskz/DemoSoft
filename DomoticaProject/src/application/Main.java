@@ -16,11 +16,24 @@ import javafx.scene.layout.AnchorPane;
 public class Main extends Application {
 
 	private Stage primaryStage;
-	private Stage primaryStage2;
+	private Stage secondaryStage=new Stage();
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			
+			FXMLLoader loader2 = new FXMLLoader(
+					Main.class.getResource("/view/TerminalesView.fxml"));
+			AnchorPane anchorPane2 = (AnchorPane) loader2.load();
+			
+			Scene scene2 = new Scene(anchorPane2);
+			
+			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			secondaryStage.setScene(scene2);
+			secondaryStage.show();
+
+			
+		/*	
 			TerminalScreen t1= new TerminalScreen();
 			TerminalScreen t2= new TerminalScreen();
 			TerminalScreen t3= new TerminalScreen();
@@ -29,6 +42,10 @@ public class Main extends Application {
 		
 			//t1.start(primaryStage2);
 			
+			t1.start(secondaryStage1);
+			t2.start(secondaryStage2);
+			t3.start(secondaryStage3);
+			t4.start(secondaryStage4);*/
 			
 			FXMLLoader loader = new FXMLLoader(
 					Main.class.getResource("/view/MainView.fxml"));
