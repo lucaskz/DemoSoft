@@ -7,14 +7,24 @@ import javafx.beans.property.SimpleStringProperty;
 public class Cancion {
 	private SimpleStringProperty  Nombre;
 	private SimpleStringProperty  Autor;
+	private float Lenght;
 	private String Path;
 	
 	 
-	public Cancion(String nombre, String autor,String path) {
+	public Cancion(String nombre, String autor,float lenght,String path) {
 		super();
 		this.Nombre = new SimpleStringProperty(nombre);
         this.Autor = new SimpleStringProperty(autor);
+        this.Lenght=lenght;
         this.Path=path;
+	}
+	
+	public float getLenght(){
+		return Lenght;
+	}
+	
+	public void setLenght(float lenght){
+		this.Lenght=lenght;
 	}
 
 	public String getNombre() {

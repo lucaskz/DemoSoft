@@ -103,7 +103,8 @@ public class Audio1Controller implements Initializable {
 		// TODO Auto-generated method stub
 		this.playlist=arrayList;
 		columna_nombre.setCellValueFactory(new PropertyValueFactory<Cancion,String>("Nombre"));
-		columna_album.setCellValueFactory(new PropertyValueFactory<Cancion,String>("Path"));		
+		columna_duracion.setCellValueFactory(new PropertyValueFactory<Cancion,Float>("Lenght"));
+		columna_album.setCellValueFactory(new PropertyValueFactory<Cancion,String>("Autor"));		
 		table_playlist.setItems(playlist);	
 		
 		

@@ -4,5 +4,8 @@
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="lib" path="resources/javafx-gallery-1.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="resources/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="resources/mp3spi1.9.5.jar"/>
+	<classpathentry kind="lib" path="resources/tritonus_share.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
