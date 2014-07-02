@@ -104,7 +104,7 @@
 	-fx-background-size: 30 30;
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat;
-	-fx-background-color: none;
+	-fx-background-color: null;
 }
 
 .weather{
@@ -165,7 +165,7 @@
     -fx-background-image:url("../../resources/images/control_play_2.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat;
-	-fx-background-color: none;
+	-fx-background-color: null;
 	-fx-background-size: 30 30;
 }
 
@@ -173,7 +173,7 @@
 	-fx-background-image:url("../../resources/images/control_next_2.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat;
-	-fx-background-color: none;
+	-fx-background-color: null;
 	-fx-background-size: 20 20;
 	
 }
@@ -182,7 +182,7 @@
 	-fx-background-image:url("../../resources/images/control_prev_2.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat;
-	-fx-background-color: none;	
+	-fx-background-color: null;	
 	-fx-background-size: 20 20;
 }
 
@@ -190,7 +190,7 @@
 		-fx-background-image:url("../../resources/images/monitor.png");
 	-fx-background-position: center;
 	-fx-background-repeat: no-repeat;
-	-fx-background-color: none;	
+	-fx-background-color: null;	
 	-fx-background-size: 40 40;
 /* prefHeight="48.0" prefWidth="42.0"*/	
 	-fx-pref-height: 48;

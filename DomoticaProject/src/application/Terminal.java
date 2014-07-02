@@ -98,6 +98,11 @@ public class Terminal {
 			terminal3.reproducirVideo();
 			terminal4.reproducirVideo();
 		}
+		
+		
+		public static void playSound(String path){
+			terminal2.reproducirCancion(path);
+		}
 
 
 

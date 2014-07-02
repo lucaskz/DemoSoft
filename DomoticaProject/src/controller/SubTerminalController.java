@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ public class SubTerminalController implements Initializable {
 	private String MEDIA_URL="http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv";
 	private static String filename;
 	private static String arg1;
+	private Media media;
 	
 	@FXML
 	private Pane contenido;
@@ -41,6 +43,15 @@ public class SubTerminalController implements Initializable {
 		MediaControl mediaControl = new MediaControl(mediaPlayer);
 		contenido.getChildren().add(mediaControl);
 
+	}
+	
+	public void reproducirCancion(String path){
+		File stream = new File(path);		
+    	this.media = new Media((arg1 != null) ? arg1 : stream.toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(this.media);
+		mediaPlayer.setAutoPlay(true);
+		MediaControl mediaControl = new MediaControl(mediaPlayer);
+		contenido.getChildren().add(mediaControl);
 	}
 
 	public String getMEDIA_URL() {

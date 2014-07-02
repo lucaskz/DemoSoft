@@ -88,72 +88,6 @@ public class Audio2Controller implements Initializable {
 			e.printStackTrace();
 		}
 		
-
-        
-		
-		/*	
-	        File home = new File("c:/FairyMusic");
-
-	        if (home.listFiles(new FileExtensionFilter()).length > 0) {
-	            for (File file : home.listFiles(new FileExtensionFilter())) {
-	                HashMap<String, String> song = new HashMap<String, String>();
-	                song.put(
-	                        "songTitle",
-	                        file.getName().substring(0,(file.getName().length() - 4)));
-	                song.put("songPath", file.getPath());
-
-	                // Adding each song to SongList
-	                songsList.add(song);
-	            }
-	        }
-	        // return songs list array
-	        
-				try {
-    		lista = new ArrayList<HashMap<String,ArrayList<String>>>();
-    		playlist = new HashMap<String,ArrayList<String>>();
-    	    actual = new ArrayList<String>();
-    	    String path = "c:/Users/Ezequiel/Desktop/lista/";
-			Files.walk(Paths.get("c:/Users/Ezequiel/Desktop/lista/")).forEach(filePath -> {
-			    if ( Files.isDirectory(filePath) && filePath.toString()) {
-			    	if(!actual.isEmpty()){
-			    		playlist.put(key, (ArrayList<String>) actual);
-			    		lista.add(playlist);
-			    	}
-			    	actual= new ArrayList<String>();
-			        playlist= new HashMap<String,ArrayList<String>>();
-			        key=filePath.toString();
-			    	
-			    }
-			    if (!Files.isDirectory(filePath)){
-			      actual.add(filePath.toString());
-			    }
-			});
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ArrayList<ArrayList<String>> Playlists = new ArrayList<ArrayList<String>>();
-		 ArrayList<String> List=new ArrayList<String>();
-	        try {
-				Files.walk(Paths.get("E:/FairyMusic")).forEach(filePath -> {
-				    if (Files.isRegularFile(filePath)&& Files.isDirectory(filePath)) {
-				    	if(!List.isEmpty()){
-				    		Playlists.add(List);
-				    	}
-				       List = new ArrayList<String>();
-				    }
-				    if ((Files.isRegularFile(filePath)&& !Files.isDirectory(filePath))){
-				      List.add(filePath.toString());
-				    }
-				});
-				
-				Playlists.add(List);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	     */
 	}
 	
 	private void getPlaylists(){
@@ -161,7 +95,7 @@ public class Audio2Controller implements Initializable {
 		/*     Metodo que me devuelve una lista de hash ,donde cada clave del hash es la lista y el valor es un arraylsit de paths   */
 		
 		
-		File root = new File( "e:/MusicaJava" );  // path por defecto, se puede cambiar, recorre maximo 1 nivel.
+		File root = new File( "./resources/musica" );  // path por defecto, se puede cambiar, recorre maximo 1 nivel.
 		
 		
 		playlist = new HashMap<String,ObservableList<Cancion>>();
@@ -176,7 +110,7 @@ public class Audio2Controller implements Initializable {
             if ( f.isDirectory() ) {
                 File[] sub = f.listFiles();
                 for ( File s : sub){
-                	Cancion temp=new Cancion(s.getName(),"Autor",s.getAbsolutePath());
+                	Cancion temp=new Cancion(s.getName(),"Autor",s.getPath());
                 	actual.add(temp);
                 }
                 playlist.put(f.getName(), (ObservableList<Cancion>) actual);

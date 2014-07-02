@@ -7,17 +7,20 @@ import javafx.beans.property.SimpleStringProperty;
 public class Cancion {
 	private SimpleStringProperty  Nombre;
 	private SimpleStringProperty  Autor;
- 
-	private String  Path;
+	private String Path;
+	
 	 
-	public Cancion(String nombre, String autor ,String path) {
+	public Cancion(String nombre, String autor,String path) {
 		super();
-		this.setNombre(new SimpleStringProperty(nombre));
+		this.Nombre = new SimpleStringProperty(nombre);
         this.Autor = new SimpleStringProperty(autor);
-        this.setPath(path);
+        this.Path=path;
 	}
 
-	 
+	public String getNombre() {
+		return Nombre.get();
+	}
+
 	public String getAutor() {
 		return Autor.get();
 	}
@@ -26,27 +29,13 @@ public class Cancion {
 		Autor = autorColumna;
 	}
 
-
-	public SimpleStringProperty getNombre() {
-		return Nombre;
-	}
-
-
-	public void setNombre(SimpleStringProperty nombre) {
-		Nombre = nombre;
-	}
-
-
 	public String getPath() {
-		return Path;
+		return this.Path;
 	}
 
-
-	public void setPath(String path) {
-		Path = path;
+	public void setPath(String posicion) {
+		this.Path = posicion;
 	}
-
- 
 
 	 
 

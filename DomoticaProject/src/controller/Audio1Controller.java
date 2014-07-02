@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import application.Terminal.TerminalScreen;
 import model.Cancion;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,7 +38,13 @@ public class Audio1Controller implements Initializable {
 	private TableView<Cancion> table_playlist;
 	
 	@FXML
-	private TableColumn Columna1;
+	private TableColumn columna_nombre;
+	
+	@FXML
+	private TableColumn columna_duracion;
+	
+	@FXML
+	private TableColumn columna_album;
 	
 	@FXML
 	private ToggleButton terminal1;
@@ -95,10 +102,9 @@ public class Audio1Controller implements Initializable {
 	public void setPlaylist(ObservableList<Cancion> arrayList) {
 		// TODO Auto-generated method stub
 		this.playlist=arrayList;
-		Columna1.setCellValueFactory(new PropertyValueFactory<Cancion, String>(
-				"Nombre"));
-		table_playlist.setItems(playlist);
-		
+		columna_nombre.setCellValueFactory(new PropertyValueFactory<Cancion,String>("Nombre"));
+		columna_album.setCellValueFactory(new PropertyValueFactory<Cancion,String>("Path"));		
+		table_playlist.setItems(playlist);	
 		
 		
 	}
