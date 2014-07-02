@@ -41,6 +41,10 @@ public class MainController implements Initializable {
 	public void insertButton(ActionEvent event){
 		TerminalScreen.insertarBoton();
 	}
+	
+	public void insertButton2(ActionEvent event){
+		TerminalScreen.insetarBoton2();
+	}
 
 	public void loadAudioScene(ActionEvent event) {
 	

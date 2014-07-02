@@ -94,6 +94,12 @@ public class Terminal {
 			// TODO Auto-generated method stub
 			//terminal2.AgregarBoton();
 			terminal1.AgregarBoton();
+			terminal2.AgregarBoton();
+		}
+
+		public static void insetarBoton2() {
+			terminal2.AgregarBoton();
+			
 		}
 		
 

@@ -48,7 +48,7 @@
                   <String fx:value="weather" />
                </styleClass>
             </Button>
-            <Button layoutX="128.0" layoutY="519.0" mnemonicParsing="false">
+            <Button layoutX="128.0" layoutY="519.0" mnemonicParsing="false" onAction="#insertButton2">
                <styleClass>
                   <String fx:value="w8-button" />
                   <String fx:value="width" />

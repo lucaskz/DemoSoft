@@ -28,36 +28,52 @@ public class TerminalController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		this.startTerminal1();
+		this.startTerminal2();
 
+
+
+	}
+
+	private void startTerminal2() {
+		URL url = getClass().getResource("/view/SubTerminalView.fxml");
+		FXMLLoader fxmlloader = new FXMLLoader();
+		fxmlloader.setLocation(url);
+		fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
+		contenido2.getChildren().clear();
 		try {
-
-			URL url = getClass().getResource("/view/SubTerminalView.fxml");
-			FXMLLoader fxmlloader = new FXMLLoader();
-			fxmlloader.setLocation(url);
-			fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
-			contenido1.getChildren().clear();
-			contenido1.getChildren().add(fxmlloader.load(url.openStream()));
-			// here we go
-			((SubTerminalController) fxmlloader.getController())
-					.setContenido(contenido1);
-			TerminalScreen.setTerminal1((SubTerminalController) fxmlloader
-					.getController());
-			/*FXMLLoader fxmlloader2 = new FXMLLoader();
-			fxmlloader.setLocation(url);
-			fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
-			contenido2.getChildren().clear();
-			contenido2.getChildren().add(fxmlloader2.load(url.openStream()));
-			// here we go
-			((SubTerminalController) fxmlloader.getController())
-					.setContenido(contenido2);
-			TerminalScreen.setTerminal2((SubTerminalController) fxmlloader
-					.getController());
-            */
+			contenido2.getChildren().add(fxmlloader.load(url.openStream()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// here we go
+		((SubTerminalController) fxmlloader.getController())
+				.setContenido(contenido2);
+		TerminalScreen.setTerminal2((SubTerminalController) fxmlloader
+				.getController());
+		
+	}
 
+	private void startTerminal1() {
+		URL url = getClass().getResource("/view/SubTerminalView.fxml");
+		FXMLLoader fxmlloader = new FXMLLoader();
+		fxmlloader.setLocation(url);
+		fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
+		contenido1.getChildren().clear();
+		try {
+			contenido1.getChildren().add(fxmlloader.load(url.openStream()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// here we go
+		((SubTerminalController) fxmlloader.getController())
+				.setContenido(contenido1);
+		TerminalScreen.setTerminal1((SubTerminalController) fxmlloader
+				.getController());
+		
 	}
 
 }
