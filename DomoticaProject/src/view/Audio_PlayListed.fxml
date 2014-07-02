@@ -7,6 +7,6 @@
 
 <AnchorPane fx:id="listado" layoutX="47.0" layoutY="44.0" prefHeight="552.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Audio2Controller">
    <children>
-      <Button fx:id="play" mnemonicParsing="false" onAction="#loadPlaylist" text="Button" />
+      
    </children>
 </AnchorPane>

@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -18,7 +20,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 public class Audio2Controller implements Initializable {
-
+	
+	private List<HashMap<String,ArrayList<String>>> lista;
+	
 	@FXML
 	private AnchorPane content;
 		
@@ -26,13 +30,20 @@ public class Audio2Controller implements Initializable {
 	private AnchorPane listado;
 	
 	@FXML
-	private Button play;
-	
-	
-	
+	private Button play;	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		this.getPlaylists();
+		double x = 69.0;
+		
+		// <Button fx:id="play" layoutX="69.0" layoutY="62.0" mnemonicParsing="false" onAction="#loadPlaylist" text="Button" />
+		for ( HashMap<String,ArrayList<String>> actual : lista ){
+			Button boton = new Button("Playlist");
+			boton.setLayoutX(x);
+			x=x+60.0;
+			listado.getChildren().add(boton);
+		}
 	}
 	
 	public void setContent(AnchorPane content){
@@ -61,8 +72,10 @@ public class Audio2Controller implements Initializable {
 			e.printStackTrace();
 		}
 		
-		/*
+
+        
 		
+		/*	
 	        File home = new File("c:/FairyMusic");
 
 	        if (home.listFiles(new FileExtensionFilter()).length > 0) {
@@ -79,6 +92,30 @@ public class Audio2Controller implements Initializable {
 	        }
 	        // return songs list array
 	        
+				try {
+    		lista = new ArrayList<HashMap<String,ArrayList<String>>>();
+    		playlist = new HashMap<String,ArrayList<String>>();
+    	    actual = new ArrayList<String>();
+    	    String path = "c:/Users/Ezequiel/Desktop/lista/";
+			Files.walk(Paths.get("c:/Users/Ezequiel/Desktop/lista/")).forEach(filePath -> {
+			    if ( Files.isDirectory(filePath) && filePath.toString()) {
+			    	if(!actual.isEmpty()){
+			    		playlist.put(key, (ArrayList<String>) actual);
+			    		lista.add(playlist);
+			    	}
+			    	actual= new ArrayList<String>();
+			        playlist= new HashMap<String,ArrayList<String>>();
+			        key=filePath.toString();
+			    	
+			    }
+			    if (!Files.isDirectory(filePath)){
+			      actual.add(filePath.toString());
+			    }
+			});
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		ArrayList<ArrayList<String>> Playlists = new ArrayList<ArrayList<String>>();
 		 ArrayList<String> List=new ArrayList<String>();
@@ -101,6 +138,36 @@ public class Audio2Controller implements Initializable {
 				e.printStackTrace();
 			}
 	     */
+	}
+	
+	private void getPlaylists(){
+		
+		/*     Metodo que me devuelve una lista de hash ,donde cada clave del hash es la lista y el valor es un arraylsit de paths   */
+		
+		
+		File root = new File( "c:/Users/Ezequiel/Desktop/lista/" );  // path por defecto, se puede cambiar, recorre maximo 1 nivel.
+		
+		lista = new ArrayList<HashMap<String,ArrayList<String>>>();
+		HashMap<String,ArrayList<String>> playlist = new HashMap<String,ArrayList<String>>();
+		List<String> actual = new ArrayList<String>();
+		
+        File[] list = root.listFiles();
+
+        if (list == null) return;
+
+        for ( File f : list ) {
+        	if (f.equals(root)) continue;
+            if ( f.isDirectory() ) {
+                File[] sub = f.listFiles();
+                for ( File s : sub){
+                	actual.add(s.getAbsolutePath());
+                }
+                playlist.put(f.getAbsolutePath(), (ArrayList<String>) actual);
+                lista.add(playlist);
+                actual=new ArrayList<String>();
+                playlist=new HashMap<String,ArrayList<String>>();
+            }
+        }
 	}
 	
 

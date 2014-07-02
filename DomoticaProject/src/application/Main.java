@@ -26,7 +26,8 @@ public class Main extends Application {
 			TerminalScreen t3= new TerminalScreen();
 			TerminalScreen t4= new TerminalScreen();
 	
-			t1.start(primaryStage2);
+		
+			//t1.start(primaryStage2);
 			
 			
 			FXMLLoader loader = new FXMLLoader(
