@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,9 +20,18 @@ import java.util.ResourceBundle;
 
 
 
+
+
+
+
+
+
+
+
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
 
 import javazoom.spi.mpeg.sampled.file.MpegAudioFileReader;
 import model.Cancion;
@@ -35,6 +46,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.Labeled;
 import javafx.scene.layout.AnchorPane;
+
+
+
 
 public class Audio2Controller implements Initializable {
 
@@ -117,33 +131,25 @@ public class Audio2Controller implements Initializable {
 		ObservableList<Cancion> actual = FXCollections.observableArrayList();
 
 		File[] list = root.listFiles();
-
-		if (list == null)
-			return;
-
 		for (File f : list) {
 			if (f.equals(root))
 				continue;
 			if (f.isDirectory()) {
 				File[] sub = f.listFiles();
-				for (File s : sub) {
-					
+				for (File s : sub) {					
 					try {
 						AudioFileFormat baseFileFormat = AudioSystem.getAudioFileFormat(s);
 						Map properties = baseFileFormat.properties();
-						Cancion temp=new Cancion((String)properties.get("title"),(String)properties.get("album"),(float) (( ((Long) properties.get("duration")) / 1000000.0 )/  60.0),s.getPath());
+						Cancion temp=new Cancion(s.getName().replaceFirst("[.][^.]+$", ""),(String)properties.get("album"),(float) (( ((Long) properties.get("duration")) / 1000000.0 )/  60.0),s.getPath());
 	                	actual.add(temp);
 					} catch (UnsupportedAudioFileException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						e.printStackTrace();				
 					}
-
-					
-				}	
-					
+				}							
 				playlist.put(f.getName(), (ObservableList<Cancion>) actual);
 				actual = FXCollections.observableArrayList();
 			}
