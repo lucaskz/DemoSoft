@@ -90,12 +90,13 @@ public class Terminal {
 			
 		}
 
-		public static void insertarBoton() {
+		public static void playMedia(String URL) {
 			// TODO Auto-generated method stub
-			terminal1.AgregarBoton();
-			terminal2.AgregarBoton();
-			terminal3.AgregarBoton();
-			terminal4.AgregarBoton();
+			terminal1.setMEDIA_URL(URL);
+			terminal1.reproducirVideo();
+			terminal2.reproducirVideo();
+			terminal3.reproducirVideo();
+			terminal4.reproducirVideo();
 		}
 
 

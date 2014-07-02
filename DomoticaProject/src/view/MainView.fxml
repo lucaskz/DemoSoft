@@ -33,7 +33,7 @@
                   <String fx:value="violet" />
                </styleClass>
             </Button>
-            <Button fx:id="gps" layoutX="286.0" layoutY="392.0" mnemonicParsing="false" onAction="#insertButton">
+            <Button fx:id="gps" layoutX="286.0" layoutY="392.0" mnemonicParsing="false" onAction="#reproducirMedia">
                <styleClass>
                   <String fx:value="w8-button" />
                   <String fx:value="yellow" />

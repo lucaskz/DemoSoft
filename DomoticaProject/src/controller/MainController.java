@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,8 +39,9 @@ public class MainController implements Initializable {
 
 	}
 	
-	public void insertButton(ActionEvent event){
-		TerminalScreen.insertarBoton();
+	public void reproducirMedia(ActionEvent event){
+		TerminalScreen.playMedia(new File("./resources/videos/videodos.mp4").toURI().toString());
+	
 	}
 	
 

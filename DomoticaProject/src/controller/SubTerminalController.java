@@ -18,7 +18,7 @@ import javafx.scene.media.MediaPlayer;
 
 public class SubTerminalController implements Initializable {
 
-	private static final String MEDIA_URL = "http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv";
+	private String MEDIA_URL="http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv";
 	private static String filename;
 	private static String arg1;
 	
@@ -33,7 +33,7 @@ public class SubTerminalController implements Initializable {
 		this.contenido = contenido1;
 	}
 
-	public void AgregarBoton() {
+	public void reproducirVideo() {
 		Media media = new Media((arg1 != null) ? arg1 : MEDIA_URL);
 		MediaPlayer mediaPlayer = new MediaPlayer(media);
 		mediaPlayer.setAutoPlay(true);
@@ -42,6 +42,16 @@ public class SubTerminalController implements Initializable {
 		contenido.getChildren().add(mediaControl);
 
 	}
+
+	public String getMEDIA_URL() {
+		return MEDIA_URL;
+	}
+
+	public void setMEDIA_URL(String mEDIA_URL) {
+		MEDIA_URL = mEDIA_URL;
+	}
+
+
 
 	/**
 	 * Controlador encargado de mostrar los temas de las listas de una playlist
