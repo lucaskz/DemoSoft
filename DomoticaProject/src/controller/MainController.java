@@ -32,11 +32,20 @@ public class MainController implements Initializable {
 	
 	@FXML
 	private Button gps;
+	
+	@FXML
+	private Button playbutton;
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void PlayMedia(ActionEvent event){
+		
+		
 	}
 	
 	public void reproducirMedia(ActionEvent event){

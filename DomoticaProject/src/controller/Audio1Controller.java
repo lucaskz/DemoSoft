@@ -2,18 +2,28 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import model.Cancion;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 public class Audio1Controller implements Initializable {
 
+	ObservableList<Cancion> playlist ;
+	
 	@FXML
 	private AnchorPane content;
 		
@@ -23,10 +33,33 @@ public class Audio1Controller implements Initializable {
 	@FXML
 	private AnchorPane playlist_content;
 	
+	@FXML
+	private TableView<Cancion> table_playlist;
+	
+	@FXML
+	private TableColumn Columna1;
+	
+	@FXML
+	private ToggleButton terminal1;
+	
+	@FXML
+	private ToggleButton terminal2;
+	
+	@FXML
+	private ToggleButton terminal3;
+	
+	@FXML
+	private ToggleButton terminal4;
+	
+
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+	
 	}
 	
+
+
 	public void setContent(AnchorPane content){
 		this.content=content;
 	}
@@ -57,6 +90,17 @@ public class Audio1Controller implements Initializable {
 			e.printStackTrace();
 		}
 				
+	}
+
+	public void setPlaylist(ObservableList<Cancion> arrayList) {
+		// TODO Auto-generated method stub
+		this.playlist=arrayList;
+		Columna1.setCellValueFactory(new PropertyValueFactory<Cancion, String>(
+				"Nombre"));
+		table_playlist.setItems(playlist);
+		
+		
+		
 	}
 	
 

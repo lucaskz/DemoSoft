@@ -8,20 +8,27 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
+import model.Cancion;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
+import javafx.scene.control.Labeled;
 import javafx.scene.layout.AnchorPane;
 
 public class Audio2Controller implements Initializable {
 	
-	private List<HashMap<String,ArrayList<String>>> lista;
+	HashMap<String,ObservableList<Cancion>> playlist ;
 	
 	@FXML
 	private AnchorPane content;
@@ -29,8 +36,7 @@ public class Audio2Controller implements Initializable {
 	@FXML
 	private AnchorPane listado;
 	
-	@FXML
-	private Button play;	
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -38,12 +44,22 @@ public class Audio2Controller implements Initializable {
 		double x = 69.0;
 		
 		// <Button fx:id="play" layoutX="69.0" layoutY="62.0" mnemonicParsing="false" onAction="#loadPlaylist" text="Button" />
-		for ( HashMap<String,ArrayList<String>> actual : lista ){
-			Button boton = new Button("Playlist");
-			boton.setLayoutX(x);
-			x=x+60.0;
-			listado.getChildren().add(boton);
+		Iterator it = playlist.entrySet().iterator();
+		while (it.hasNext()) {
+		Map.Entry e = (Map.Entry)it.next();
+		Button boton = new Button((String) e.getKey());
+		boton.setLayoutX(x);
+		boton.setOnAction(this::loadPlaylist);		
+		x=x+60.0;
+		listado.getChildren().add(boton);
 		}
+		
+//		for ( HashMap<String,ArrayList<String>> actual : lista ){
+//			Button boton = new Button(actual.);
+//			boton.setLayoutX(x);
+//			x=x+60.0;
+//			listado.getChildren().add(boton);
+//		}
 	}
 	
 	public void setContent(AnchorPane content){
@@ -56,8 +72,8 @@ public class Audio2Controller implements Initializable {
 	@FXML
 	public void loadPlaylist(ActionEvent event) {	
 		content.getChildren().clear();
+		 
 		try {
-			
 			 URL url = getClass().getResource("/view/Audio_PlaylistContent.fxml");
 			 FXMLLoader fxmlloader = new FXMLLoader();
 			 fxmlloader.setLocation(url);
@@ -65,8 +81,8 @@ public class Audio2Controller implements Initializable {
 			 content.getChildren().clear();
 			 content.getChildren().add( fxmlloader.load(url.openStream()));
 			            // here we go
-			    ((Audio1Controller)fxmlloader.getController()).setContent(content);
-			
+			 ((Audio1Controller)fxmlloader.getController()).setContent(content);
+			 ((Audio1Controller)fxmlloader.getController()).setPlaylist(playlist.get(((Button)event.getSource()).getText()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -145,11 +161,11 @@ public class Audio2Controller implements Initializable {
 		/*     Metodo que me devuelve una lista de hash ,donde cada clave del hash es la lista y el valor es un arraylsit de paths   */
 		
 		
-		File root = new File( "c:/Users/Ezequiel/Desktop/lista/" );  // path por defecto, se puede cambiar, recorre maximo 1 nivel.
+		File root = new File( "e:/MusicaJava" );  // path por defecto, se puede cambiar, recorre maximo 1 nivel.
 		
-		lista = new ArrayList<HashMap<String,ArrayList<String>>>();
-		HashMap<String,ArrayList<String>> playlist = new HashMap<String,ArrayList<String>>();
-		List<String> actual = new ArrayList<String>();
+		
+		playlist = new HashMap<String,ObservableList<Cancion>>();
+		ObservableList<Cancion> actual = FXCollections.observableArrayList();
 		
         File[] list = root.listFiles();
 
@@ -160,12 +176,11 @@ public class Audio2Controller implements Initializable {
             if ( f.isDirectory() ) {
                 File[] sub = f.listFiles();
                 for ( File s : sub){
-                	actual.add(s.getAbsolutePath());
+                	Cancion temp=new Cancion(s.getName(),"Autor",s.getAbsolutePath());
+                	actual.add(temp);
                 }
-                playlist.put(f.getAbsolutePath(), (ArrayList<String>) actual);
-                lista.add(playlist);
-                actual=new ArrayList<String>();
-                playlist=new HashMap<String,ArrayList<String>>();
+                playlist.put(f.getName(), (ObservableList<Cancion>) actual);
+                actual=FXCollections.observableArrayList();
             }
         }
 	}

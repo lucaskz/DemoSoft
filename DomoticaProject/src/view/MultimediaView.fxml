@@ -40,10 +40,33 @@
 				</Button>
 			</children>
 		</AnchorPane>
-		<AnchorPane fx:id="content" layoutX="120.0" prefHeight="800.0" prefWidth="1161.0">
-			<children>
-				
-			</children>
-		</AnchorPane>
+		<AnchorPane fx:id="content" layoutX="120.0" prefHeight="800.0" prefWidth="1161.0" />
+      <AnchorPane fx:id="playbar" layoutY="721.0" prefHeight="79.0" prefWidth="1280.0" style="-fx-background-color: #191919 !important;" styleClass="grey">
+   <children>
+      <ProgressBar layoutX="196.0" layoutY="31.0" prefHeight="18.0" prefWidth="697.0" progress="0.0" />
+      <ImageView fitHeight="48.0" fitWidth="53.0" layoutX="21.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="96.0" layoutY="31.0" text="Tema Actual">
+         <styleClass>
+            <String fx:value="item-title" />
+            <String fx:value="word-white" />
+         </styleClass>
+      </Label>
+      <Button layoutX="928.0" layoutY="25.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" styleClass="control_back" />
+      <Button fx:id="playbutton" layoutX="990.0" layoutY="18.0" mnemonicParsing="false" onAction="#PlayMedia" prefHeight="48.0" prefWidth="53.0" styleClass="control_play" />
+      <Button layoutX="1060.0" layoutY="16.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="53.0" styleClass="control_next" />
+      <Label layoutX="182.0" layoutY="51.0" text="00:00">
+         <styleClass>
+            <String fx:value="item-title" />
+            <String fx:value="word-white" />
+         </styleClass>
+      </Label>
+      <Label layoutX="880.0" layoutY="51.0" text="10:00">
+         <styleClass>
+            <String fx:value="item-title" />
+            <String fx:value="word-white" />
+         </styleClass>
+      </Label>
+   </children>
+</AnchorPane>
 	</children>
 </AnchorPane>

@@ -2,14 +2,19 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import model.Cancion;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import application.Main;
 
@@ -35,6 +40,9 @@ public class MultimediaController implements Initializable {
 	
 	@FXML
 	private AnchorPane menuBar;
+	
+	@FXML
+	private Button play;	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) { 
@@ -44,7 +52,17 @@ public class MultimediaController implements Initializable {
 
 	}
 	
+	public void PlayMedia(ActionEvent event){
 	
+    TableView<Cancion> Tabla= (TableView<Cancion>) content.getChildren().get(0).lookup("#table_playlist");
+	List<Cancion> tabla = Tabla.getSelectionModel().getSelectedItems();
+    
+	
+	
+	
+	}
+ 
+
 	
 	@FXML
 	public void loadPicture(ActionEvent event){

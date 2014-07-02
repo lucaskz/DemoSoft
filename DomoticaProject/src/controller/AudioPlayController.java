@@ -82,14 +82,21 @@ public class AudioPlayController implements Initializable {
 
 	// CARGO LA LISTA DE TEMAS
 	public void cargarTemas(List<String> params, String Lista) {
+		
+		// CUANDO ENTRO PREGUNTO SI ALGO SE ESTA REPRODUCIENDO
 		if (salio == 1) {
 			System.out.println("Entro");
 			mediaView.getMediaPlayer().stop();
 			salio = 0;
 		}
+		
+		
+		
 		mediaView = new MediaView();
 		final File dir = (params.size() > 0) ? new File(params.get(0))
 				: new File(Lista);
+		
+		//PREGUNTABAS POR EL PATH
 		if (!dir.exists() || !dir.isDirectory()) {
 			System.out.println("Cannot find audio source directory: " + dir
 					+ " please supply a directory as a command line argument");
@@ -99,6 +106,7 @@ public class AudioPlayController implements Initializable {
 		// CREA LA LISTA DE LAS CANCIONES
 
 		int posicion = 0;
+		
 		for (String file : dir.list(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
@@ -107,6 +115,7 @@ public class AudioPlayController implements Initializable {
 
 				canciones.add(new Cancion(name, "Alan"));
 
+					// EXTENSION QUE ESTA DEFINIDA ARRIBA
 				for (String ext : SUPPORTED_FILE_EXTENSIONS) {
 					if (name.endsWith(ext)) {
 
@@ -117,6 +126,7 @@ public class AudioPlayController implements Initializable {
 				return false;
 			}
 		}))
+			
 			players.add(createPlayer("file://"
 					+ (dir + "\\" + file).replace("\\", "/").replaceAll(" ",
 							"%20")));
@@ -129,10 +139,14 @@ public class AudioPlayController implements Initializable {
 
 		// CREAR EL MEDIAVIEW QUE ES EL QUE REPRODUCE Y MANEJA TODO
 		mediaView = new MediaView(players.get(0));
+		
+		
 		for (int i = 0; i < players.size(); i++) {
 			player = players.get(i);
 			final MediaPlayer nextPlayer = players
 					.get((i + 1) % players.size());
+			
+			
 			player.setOnEndOfMedia(new Runnable() {
 				@Override
 				public void run() {
@@ -146,10 +160,12 @@ public class AudioPlayController implements Initializable {
 				}
 			});
 		}
-		mediaView.setMediaPlayer(players.get(0));// ACA VA LA PRUEBA DE QUE
+		
+		mediaView.setMediaPlayer(players.get(2));// ACA VA LA PRUEBA DE QUE
 													// REPRODUZCA EL TEMA EN LA
 													// POSICION 0
- 	mediaView.getMediaPlayer().play();
+		
+		mediaView.getMediaPlayer().play();
 		cancionActual = 0;
 		Cancion c = canciones.get(0);
 		pista.setText(c.getNombre().toString());
