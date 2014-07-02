@@ -33,19 +33,7 @@ public class Main extends Application {
 			secondaryStage.show();
 
 			
-		/*	
-			TerminalScreen t1= new TerminalScreen();
-			TerminalScreen t2= new TerminalScreen();
-			TerminalScreen t3= new TerminalScreen();
-			TerminalScreen t4= new TerminalScreen();
-	
-		
-			//t1.start(primaryStage2);
-			
-			t1.start(secondaryStage1);
-			t2.start(secondaryStage2);
-			t3.start(secondaryStage3);
-			t4.start(secondaryStage4);*/
+
 			
 			FXMLLoader loader = new FXMLLoader(
 					Main.class.getResource("/view/MainView.fxml"));
