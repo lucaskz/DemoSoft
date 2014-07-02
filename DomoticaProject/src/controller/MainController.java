@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.Terminal.TerminalScreen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,11 +28,18 @@ public class MainController implements Initializable {
 	
 	@FXML
 	private Button picture;
+	
+	@FXML
+	private Button gps;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void insertButton(ActionEvent event){
+		TerminalScreen.insertarBoton();
 	}
 
 	public void loadAudioScene(ActionEvent event) {

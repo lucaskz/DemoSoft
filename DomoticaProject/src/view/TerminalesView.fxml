@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="372.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TerminalController">
+   <children>
+      <Pane fx:id="contenido1" prefHeight="240.0" prefWidth="320.0" style="-fx-background-color: black; -fx-border-color: white;" >
+      	<children></children>
+      </Pane>
+      <Pane fx:id="contenido2" layoutX="320.0" prefHeight="240.0" prefWidth="320.0" style="-fx-background-color: black; -fx-border-color: white;" >
+      	<children></children>
+      </Pane>
+      <Pane fx:id="contenido3" layoutY="240.0" prefHeight="240.0" prefWidth="320.0" style="-fx-background-color: black; -fx-border-color: white;" >
+     	<children></children>
+      </Pane>
+      <Pane fx:id="contenido4" layoutX="320.0" layoutY="240.0" prefHeight="240.0" prefWidth="320.0" style="-fx-background-color: black; -fx-border-color: white;" >
+     	<children></children>
+      </Pane>  
+   </children>
+</AnchorPane>
