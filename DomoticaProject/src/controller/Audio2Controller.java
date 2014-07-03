@@ -32,6 +32,7 @@ import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
@@ -58,17 +59,27 @@ public class Audio2Controller implements Initializable {
 		double x_label=63.0;
 		for (Iterator<HashMap<String, Object>> iterator = this.playlists.iterator(); iterator.hasNext();) {			
 			HashMap<String,Object> act =  iterator.next();
+			Button boton= new Button("");
+			String image = this.getClass().getResource("Cover.jpg").toExternalForm();
 			//Image img1 = new Image(getClass().getResourceAsStream("Cover.jpg"));
-			//Image img1 = new Image(getClass().getResourceAsStream("C:/Users/Lucas/git/DemoSoft/DomoticaProject/resources/musica/Benjamin/Cover.png"));
-			Image img1 = new Image(getClass().getResourceAsStream((new File ("./resources/musica/Benjamin/Cover.png")).toURI().toString()));
-			Button boton = new Button("",new ImageView(img1));
+			//Image img1 = new Image(getClass().getResourceAsStream("file:///Users/Lucas/git/DemoSoft/DomoticaProject/resources/musica/Benjamin/Cover.png"));
+//			if(act.get("imagen") != null){
+//		    Image img1 = new Image(((File) act.get("imagen")).toURI().toString());
+		
+
+//			 boton = new Button("",new ImageView(img1));
+//			}
+//			else{
+//				 boton = new Button("");
+//			}
+			boton.setStyle("-fx-background-image:url('"+image+"');");
 			boton.setLayoutX(x);
 			boton.setLayoutY(y);
 			boton.setUserData(act.get("canciones"));
 			boton.getStyleClass().add("playlist");
 			boton.setOnAction(this::loadPlaylist);
-			
-			
+
+
 			Label label = new Label((String) act.get("nombre"));
 			label.getStyleClass().add("item-title");
 			label.setLayoutX(x_label);
@@ -157,8 +168,8 @@ public class Audio2Controller implements Initializable {
 						Cancion temp=new Cancion(s.getName().replaceFirst("[.][^.]+$", ""),(String)properties.get("album"),(float) (( ((Long) properties.get("duration")) / 1000000.0 )/  60.0),s.getPath());
 						canciones.add(temp);
 						}
-						if(ext.equals("jpg")){
-							playlist_actual.put("imagen", s.getCanonicalPath());
+						if(ext.equals("png")){
+							playlist_actual.put("imagen", s);
 						}
 					} catch (UnsupportedAudioFileException e) {
 						// TODO Auto-generated catch block
