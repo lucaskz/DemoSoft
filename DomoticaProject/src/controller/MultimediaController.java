@@ -137,6 +137,7 @@ public class MultimediaController implements Initializable {
 	
 	public void PlayVideo(Video video,String terminal){
 		mp_actual=TerminalScreen.playMedia(video.getPath(),terminal);
+		this.currentTerminal.setText(terminal);
 		mediaBar.setProgress(0);
 		progressChangeListener = new ChangeListener<Duration>() {
 			@Override
@@ -251,7 +252,7 @@ public class MultimediaController implements Initializable {
 	
 	@FXML
 	public void previousTerminal(ActionEvent event) {
-		if(mp_actual != null){
+		if(mp_actual != null & progressChangeListener2!= null & progressChangeListener!=null){
 			mp_actual.currentTimeProperty().removeListener(progressChangeListener2);
 			mp_actual.currentTimeProperty().removeListener(progressChangeListener);
 		}
@@ -318,7 +319,7 @@ public class MultimediaController implements Initializable {
 	
 	@FXML
 	public void nextTerminal(ActionEvent event) {
-		if(mp_actual != null){
+		if(mp_actual != null & progressChangeListener2!= null & progressChangeListener!=null){
 			mp_actual.currentTimeProperty().removeListener(progressChangeListener2);
 			mp_actual.currentTimeProperty().removeListener(progressChangeListener);
 		}

@@ -15,15 +15,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class Audio1Controller implements Initializable {
 
 	ObservableList<Cancion> playlist ;
+	
+	String imagen;
+	
+	String nombre_lista;
 	
 	public MultimediaController multi;
 	
@@ -60,6 +67,11 @@ public class Audio1Controller implements Initializable {
 	@FXML
 	private ToggleButton terminal4;
 	
+	@FXML
+	private ImageView cover;
+	
+	@FXML
+	private Label label_nombreLista;
 
 	
 	@Override
@@ -114,6 +126,20 @@ public class Audio1Controller implements Initializable {
 		columna_album.setCellValueFactory(new PropertyValueFactory<Cancion,String>("Autor"));		
 		table_playlist.setItems(playlist);	
 		
+		
+	}
+
+	public void setImagen(String imagen) {
+		// TODO Auto-generated method stub
+		this.imagen=imagen;
+		Image image = new Image(getClass().getResourceAsStream(this.imagen));
+		cover.setImage(image);;
+	}
+
+	public void setNombreLista(String string) {
+		// TODO Auto-generated method stub
+		this.nombre_lista=string;
+		label_nombreLista.setText(this.nombre_lista);
 		
 	}
 	

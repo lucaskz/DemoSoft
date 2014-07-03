@@ -49,7 +49,7 @@ public class MainController implements Initializable {
 	}
 	
 	public void reproducirMedia(ActionEvent event){
-		TerminalScreen.playMedia(new File("./resources/videos/videodos.mp4").toURI().toString());
+	//	TerminalScreen.playMedia(new File("./resources/videos/videodos.mp4").toURI().toString());
 	
 	}
 	
