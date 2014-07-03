@@ -36,6 +36,18 @@
 	-fx-pref-width:310;
 }
 
+.playlist{
+    -fx-border-style:null;
+	-fx-font-size: 13;
+	-fx-font-weight: bold;
+	-fx-cursor: hand   ;
+	-fx-opacity:0.9;
+	-fx-background-radius: 0;
+	-fx-pref-height:125;
+	-fx-pref-width:125;	
+	-fx-background-repeat: no-repeat;
+    -fx-background-position: center; 
+}
 
 
 
@@ -161,6 +173,8 @@
 	-fx-background-position: 30 25;	
 }
 
+
+
 .control_play{
     -fx-background-image:url("../../resources/images/control_play_2.png");
 	-fx-background-position: center;
@@ -209,6 +223,14 @@
     -fx-font-size: 42pt;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white ;
+}
+
+.header_black{
+    -fx-font-size: 30pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: black ;
+    -fx-font-weight: bold;
+    
 }
 
 .item-title{

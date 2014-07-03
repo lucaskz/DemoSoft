@@ -13,25 +13,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import org.apache.commons.io.FilenameUtils;
 
 import javazoom.spi.mpeg.sampled.file.MpegAudioFileReader;
 import model.Cancion;
@@ -44,15 +33,16 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-
-
+import javafx.scene.image.ImageView;
 
 
 public class Audio2Controller implements Initializable {
 
-	HashMap<String, ObservableList<Cancion>> playlist;
+	ArrayList<HashMap<String,Object>> playlists;
 
 	@FXML
 	private AnchorPane content;
@@ -63,26 +53,50 @@ public class Audio2Controller implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.getPlaylists();
-		double x = 69.0;
-
-		// <Button fx:id="play" layoutX="69.0" layoutY="62.0"
-		// mnemonicParsing="false" onAction="#loadPlaylist" text="Button" />
-		Iterator it = playlist.entrySet().iterator();
-		while (it.hasNext()) {
-			Map.Entry e = (Map.Entry) it.next();
-			Button boton = new Button((String) e.getKey());
+		double x = 63.0;
+		double y=154.0;
+		double x_label=63.0;
+		for (Iterator<HashMap<String, Object>> iterator = this.playlists.iterator(); iterator.hasNext();) {			
+			HashMap<String,Object> act =  iterator.next();
+			//Image img1 = new Image(getClass().getResourceAsStream("Cover.jpg"));
+			//Image img1 = new Image(getClass().getResourceAsStream("C:/Users/Lucas/git/DemoSoft/DomoticaProject/resources/musica/Benjamin/Cover.png"));
+			Image img1 = new Image(getClass().getResourceAsStream((new File ("./resources/musica/Benjamin/Cover.png")).toURI().toString()));
+			Button boton = new Button("",new ImageView(img1));
 			boton.setLayoutX(x);
+			boton.setLayoutY(y);
+			boton.setUserData(act.get("canciones"));
+			boton.getStyleClass().add("playlist");
 			boton.setOnAction(this::loadPlaylist);
-			x = x + 60.0;
-			listado.getChildren().add(boton);
+			
+			
+			Label label = new Label((String) act.get("nombre"));
+			label.getStyleClass().add("item-title");
+			label.setLayoutX(x_label);
+			label.setLayoutY(292.0);
+			x = x + 130.0;
+			x_label=x_label+130;
+			listado.getChildren().addAll(boton,label);			
 		}
-
-		// for ( HashMap<String,ArrayList<String>> actual : lista ){
-		// Button boton = new Button(actual.);
-		// boton.setLayoutX(x);
-		// x=x+60.0;
-		// listado.getChildren().add(boton);
-		// }
+       		
+		
+		
+//		Iterator it = playlists.entrySet().iterator();
+//		while (it.hasNext()) {
+//			Map.Entry e = (Map.Entry) it.next();
+//			Button boton = new Button();
+//			boton.setLayoutX(x);
+//			boton.setLayoutY(y);
+//			boton.setUserData(e.getValue());
+//			boton.getStyleClass().add("playlist");
+//			boton.setOnAction(this::loadPlaylist);			
+//			Label label = new Label((String) e.getKey());
+//			label.getStyleClass().add("item-title");
+//			label.setLayoutX(x_label);
+//			label.setLayoutY(292.0);
+//			x = x + 130.0;
+//			x_label=x_label+130;
+//			listado.getChildren().addAll(boton,label);
+//		}
 	}
 
 	public void setContent(AnchorPane content) {
@@ -96,7 +110,6 @@ public class Audio2Controller implements Initializable {
 	@FXML
 	public void loadPlaylist(ActionEvent event) {
 		content.getChildren().clear();
-
 		try {
 			URL url = getClass()
 					.getResource("/view/Audio_PlaylistContent.fxml");
@@ -107,14 +120,11 @@ public class Audio2Controller implements Initializable {
 			content.getChildren().add(fxmlloader.load(url.openStream()));
 			// here we go
 			((Audio1Controller) fxmlloader.getController()).setContent(content);
-			((Audio1Controller) fxmlloader.getController())
-					.setPlaylist(playlist.get(((Button) event.getSource())
-							.getText()));
+			((Audio1Controller) fxmlloader.getController()).setPlaylist(  (ObservableList<Cancion>) ((Button) event.getSource()).getUserData()  );
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	private void getPlaylists() {
@@ -126,10 +136,12 @@ public class Audio2Controller implements Initializable {
 													// puede cambiar, recorre
 													// maximo 1 nivel.
 
-		playlist = new HashMap<String, ObservableList<Cancion>>();
+		playlists = new ArrayList<HashMap<String, Object>>();
 		
-		ObservableList<Cancion> actual = FXCollections.observableArrayList();
-
+		HashMap<String, Object> playlist_actual = new HashMap<String,Object>();
+		
+		ObservableList<Cancion> canciones = FXCollections.observableArrayList();
+		
 		File[] list = root.listFiles();
 		for (File f : list) {
 			if (f.equals(root))
@@ -138,10 +150,16 @@ public class Audio2Controller implements Initializable {
 				File[] sub = f.listFiles();
 				for (File s : sub) {					
 					try {
+						String ext=FilenameUtils.getExtension(s.getCanonicalPath());
+						if( ext.equals("mp3") || ext.equals("wav") || ext.equals("wma")) {
 						AudioFileFormat baseFileFormat = AudioSystem.getAudioFileFormat(s);
 						Map properties = baseFileFormat.properties();
 						Cancion temp=new Cancion(s.getName().replaceFirst("[.][^.]+$", ""),(String)properties.get("album"),(float) (( ((Long) properties.get("duration")) / 1000000.0 )/  60.0),s.getPath());
-	                	actual.add(temp);
+						canciones.add(temp);
+						}
+						if(ext.equals("jpg")){
+							playlist_actual.put("imagen", s.getCanonicalPath());
+						}
 					} catch (UnsupportedAudioFileException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -149,9 +167,12 @@ public class Audio2Controller implements Initializable {
 						// TODO Auto-generated catch block
 						e.printStackTrace();				
 					}
-				}							
-				playlist.put(f.getName(), (ObservableList<Cancion>) actual);
-				actual = FXCollections.observableArrayList();
+				}
+				playlist_actual.put("canciones", canciones);
+				playlist_actual.put("nombre", f.getName());
+				playlists.add(playlist_actual);
+				playlist_actual=new HashMap<String,Object>();
+				canciones = FXCollections.observableArrayList();
 			}
 		}
 	}
