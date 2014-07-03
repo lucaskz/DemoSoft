@@ -25,6 +25,8 @@ public class Audio1Controller implements Initializable {
 
 	ObservableList<Cancion> playlist ;
 	
+	public MultimediaController multi;
+	
 	@FXML
 	private AnchorPane content;
 		
@@ -63,6 +65,11 @@ public class Audio1Controller implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 	
+	}
+	
+	public void setMultimedia(MultimediaController multimediaController) {
+		// TODO Auto-generated method stub
+		this.multi=multimediaController;
 	}
 	
 

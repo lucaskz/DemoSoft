@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import model.Cancion;
 import model.MediaControl;
+import model.Video;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
@@ -20,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
@@ -84,11 +86,60 @@ public class MultimediaController implements Initializable {
 				.lookup("#table_playlist");
 		List<Cancion> tabla = Tabla.getSelectionModel().getSelectedItems();
 		Cancion cancion_selected = tabla.get(0);
-		mp=TerminalScreen.playSound(cancion_selected.getPath(),this.currentTerminal.getText());
-
+		if(((ToggleButton) this.content.lookup("#terminal1")).isSelected())
+			mp=TerminalScreen.playMedia(cancion_selected.getPath(),"TERMINAL 1");
+		if(((ToggleButton) this.content.lookup("#terminal2")).isSelected())
+			mp=TerminalScreen.playMedia(cancion_selected.getPath(),"TERMINAl 2");
+		if(((ToggleButton) this.content.lookup("#terminal3")).isSelected())
+			mp=TerminalScreen.playMedia(cancion_selected.getPath(),"TERMINAL 3");
+		if(((ToggleButton) this.content.lookup("#terminal4")).isSelected())
+			mp=TerminalScreen.playMedia(cancion_selected.getPath(),"TERMINAL 4");
 		
-		this.mediaProgressBar(this.currentTerminal.getText());
+		mediaBar.setProgress(0);
+		progressChangeListener = new ChangeListener<Duration>() {
+			@Override
+			public void changed(
+					ObservableValue<? extends Duration> observableValue,
+					Duration oldValue, Duration newValue) {
+				mediaBar.setProgress(1.0 * mp.getCurrentTime().toMillis()
+						/ mp.getTotalDuration().toMillis());
+			}
+		};
+		mp.currentTimeProperty().addListener(progressChangeListener);
+		progressChangeListener2 = new InvalidationListener() {
+			public void invalidated(Observable ov) {
+				mediaBarTime.setVisible(true);
+				mediaBarTime.setText(MediaControl.formatTime(mp.getCurrentTime(), mp.getTotalDuration()));
 
+			}
+		};
+		mp.currentTimeProperty().addListener(progressChangeListener2);
+		
+		
+
+	}
+	
+	public void PlayVideo(Video video,String terminal){
+		mp=TerminalScreen.playMedia(video.getPath(),terminal);
+		mediaBar.setProgress(0);
+		progressChangeListener = new ChangeListener<Duration>() {
+			@Override
+			public void changed(
+					ObservableValue<? extends Duration> observableValue,
+					Duration oldValue, Duration newValue) {
+				mediaBar.setProgress(1.0 * mp.getCurrentTime().toMillis()
+						/ mp.getTotalDuration().toMillis());
+			}
+		};
+		mp.currentTimeProperty().addListener(progressChangeListener);
+		progressChangeListener2 = new InvalidationListener() {
+			public void invalidated(Observable ov) {
+				mediaBarTime.setVisible(true);
+				mediaBarTime.setText(MediaControl.formatTime(mp.getCurrentTime(), mp.getTotalDuration()));
+
+			}
+		};
+		mp.currentTimeProperty().addListener(progressChangeListener2);
 	}
 
 	@FXML
@@ -112,7 +163,7 @@ public class MultimediaController implements Initializable {
 			// here we go
 			((Picture1Controller) fxmlloader.getController())
 					.setContent(content);
-
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -139,6 +190,7 @@ public class MultimediaController implements Initializable {
 			content.getChildren().add(fxmlloader.load(url.openStream()));
 			// here we go
 			((Video1Controller) fxmlloader.getController()).setContent(content);
+			((Video1Controller) fxmlloader.getController()).setMultimedia(this);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -171,6 +223,7 @@ public class MultimediaController implements Initializable {
 			content.getChildren().add(fxmlloader.load(url.openStream()));
 			// here we go
 			((Audio2Controller) fxmlloader.getController()).setContent(content);
+			((Audio2Controller) fxmlloader.getController()).setMultimedia(this);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -42,17 +42,8 @@ public class SubTerminalController implements Initializable {
 	public MediaPlayer getMediaPlayer(){
 		return this.mediaPlayer;
 	}
-
-	public void reproducirVideo() {
-		Media media = new Media((arg1 != null) ? arg1 : MEDIA_URL);
-		MediaPlayer mediaPlayer = new MediaPlayer(media);
-		mediaPlayer.setAutoPlay(true);
-		MediaControl mediaControl = new MediaControl(mediaPlayer);
-		contenido.getChildren().add(mediaControl);
-
-	}
 	
-	public MediaPlayer reproducirCancion(String path){
+	public MediaPlayer reproducirMedia(String path){
 		File stream = new File(path);		
     	Media media = new Media((arg1 != null) ? arg1 : stream.toURI().toString());
 		mediaPlayer = new MediaPlayer(media);	 

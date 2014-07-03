@@ -31,6 +31,8 @@ import javafx.scene.layout.AnchorPane;
 public class Audio2Controller implements Initializable {
 
 	ArrayList<HashMap<String,Object>> playlists;
+	
+	public MultimediaController multi;
 
 	@FXML
 	private AnchorPane content;
@@ -97,6 +99,11 @@ public class Audio2Controller implements Initializable {
 
 	public void setContent(AnchorPane content) {
 		this.content = content;
+	}
+	
+	public void setMultimedia(MultimediaController multimediaController) {
+		// TODO Auto-generated method stub
+		this.multi=multimediaController;
 	}
 
 	/**

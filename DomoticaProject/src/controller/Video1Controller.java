@@ -9,14 +9,19 @@ import java.util.ResourceBundle;
 
 import org.apache.commons.io.FilenameUtils;
 
+import model.Cancion;
 import model.Video;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
 
@@ -26,6 +31,8 @@ import javafx.scene.layout.AnchorPane;
 public class Video1Controller implements Initializable {
 	
 	
+	public MultimediaController multi;
+	
 	 ArrayList<Video> videoList;
 
 	@FXML
@@ -34,13 +41,57 @@ public class Video1Controller implements Initializable {
 	@FXML
 	private AnchorPane listado;
 	
+	@FXML
+	private ToggleButton terminal1;
+	
+	@FXML
+	private ToggleButton terminal2;
+	
+	@FXML
+	private ToggleButton terminal3;
+	
+	@FXML
+	private ToggleButton terminal4;
+	
+	
+	
+	
+	
 	
 	
 	public void setContent(AnchorPane content){
 		this.content=content;
 	}
 	 
+//	public void loadVideo(ActionEvent event){
+//		content.getChildren().clear();
+//		try {
+//			URL url = getClass()
+//					.getResource("/view/Video_Content.fxml");
+//			FXMLLoader fxmlloader = new FXMLLoader();
+//			fxmlloader.setLocation(url);
+//			fxmlloader.setBuilderFactory(new JavaFXBuilderFactory());
+//			content.getChildren().clear();
+//			content.getChildren().add(fxmlloader.load(url.openStream()));
+//			// here we go
+//			((Video2Controller) fxmlloader.getController()).setContent(content);
+//			((Video2Controller) fxmlloader.getController()).setVideo(  (Video) ((Button) event.getSource()).getUserData()  );
+//			((Video2Controller) fxmlloader.getController()).startMediaView();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
 	public void loadVideo(ActionEvent event){
+		if(this.terminal1.isSelected())
+			this.multi.PlayVideo( (Video) ((Button) event.getSource()).getUserData(),"TERMINAL 1");
+		if(this.terminal2.isSelected())
+			this.multi.PlayVideo( (Video) ((Button) event.getSource()).getUserData(),"TERMINAL 2");
+		if(this.terminal3.isSelected())
+			this.multi.PlayVideo( (Video) ((Button) event.getSource()).getUserData(),"TERMINAL 3");	
+		if(this.terminal4.isSelected())
+			this.multi.PlayVideo( (Video) ((Button) event.getSource()).getUserData(),"TERMINAL 4");	
 		
 	}
 
@@ -98,6 +149,12 @@ public class Video1Controller implements Initializable {
 		}
 	}
 
+	public void setMultimedia(MultimediaController multimediaController) {
+		// TODO Auto-generated method stub
+		this.multi=multimediaController;
+	}
+
+	
 	
 
 	

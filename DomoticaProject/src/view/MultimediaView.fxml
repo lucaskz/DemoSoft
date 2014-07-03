@@ -40,7 +40,11 @@
 				</Button>
 			</children>
 		</AnchorPane>
-		<AnchorPane fx:id="content" layoutX="120.0" prefHeight="800.0" prefWidth="1161.0" />
+		<AnchorPane fx:id="content" layoutX="120.0" prefHeight="800.0" prefWidth="1161.0" >
+		<children>
+		
+		</children>
+		</AnchorPane>
 		<AnchorPane fx:id="playbar" layoutY="721.0" prefHeight="84.0" prefWidth="1288.0" style="-fx-background-color: #191919 !important;" styleClass="grey">
 			<children>
 				<ProgressBar fx:id="mediaBar" layoutX="196.0" layoutY="31.0" prefHeight="18.0" prefWidth="697.0" progress="0.0" />

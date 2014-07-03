@@ -106,34 +106,24 @@ public class Terminal {
 			
 		}
 
-		public static void playMedia(String URL) {
+		public static MediaPlayer playMedia(String URL,String terminal) {
 			// TODO Auto-generated method stub
-			terminal1.setMEDIA_URL(URL);
-			terminal1.reproducirVideo();
-			terminal2.reproducirVideo();
-			terminal3.reproducirVideo();
-			terminal4.reproducirVideo();
-		}
-		
-		
-		public static MediaPlayer playSound(String path, String terminal){
+			
 			switch (terminal) {
 			case "TERMINAL 1":
-				return terminal1.reproducirCancion(path);
+				return terminal1.reproducirMedia(URL);
 			case "TERMINAL 2":
-				return terminal2.reproducirCancion(path);
+				return terminal2.reproducirMedia(URL);
 			case "TERMINAL 3":
-				return terminal3.reproducirCancion(path);
+				return terminal3.reproducirMedia(URL);
 			case "TERMINAL 4":
-				return terminal4.reproducirCancion(path);
+				return terminal4.reproducirMedia(URL);
 			default:
 				break;
 			}
 			return null;
-			
-			
 		}
-
+		
 
 
 		public static void setTerminal(SubTerminalController controller,
