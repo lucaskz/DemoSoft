@@ -188,7 +188,7 @@ public class MediaControl extends BorderPane {
     }
   }
 
-  private static String formatTime(Duration elapsed, Duration duration) {
+  public static String formatTime(Duration elapsed, Duration duration) {
     int intElapsed = (int) Math.floor(elapsed.toSeconds());
     int elapsedHours = intElapsed / (60 * 60);
     if (elapsedHours > 0) {
@@ -224,6 +224,8 @@ public class MediaControl extends BorderPane {
       }
     }
   }
+
+
 }
 
 /**

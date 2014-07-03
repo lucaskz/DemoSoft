@@ -9,6 +9,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import application.Main;
 import model.Cancion;
 import javafx.application.Platform;
@@ -395,7 +397,7 @@ public class AudioPlayController implements Initializable {
 	private void Back() {
 		salio++;
 		this.getMainApp().changeScene("Music", "AnchorPane");
-
+	
 	}
 
 }
