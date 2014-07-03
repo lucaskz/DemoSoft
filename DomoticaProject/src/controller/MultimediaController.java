@@ -1,27 +1,45 @@
 package controller;
 
+import java.beans.EventHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import model.Cancion;
+import model.MediaControl;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import application.Main;
 import application.Terminal.TerminalScreen;
 
 public class MultimediaController implements Initializable {
 
 	private Main mainApp;
+
+	private MediaPlayer mp;
 
 	@FXML
 	private Button video;
@@ -42,12 +60,16 @@ public class MultimediaController implements Initializable {
 	private AnchorPane menuBar;
 
 	@FXML
+	private ProgressBar mediaBar;
+
+	@FXML
+	private Label mediaBarTime;
+
+	@FXML
 	private Button play;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("Initialize");
-		// TODO Auto-generated method stub
 
 	}
 
@@ -57,6 +79,25 @@ public class MultimediaController implements Initializable {
 		List<Cancion> tabla = Tabla.getSelectionModel().getSelectedItems();
 		Cancion cancion_selected = tabla.get(0);
 		TerminalScreen.playSound(cancion_selected.getPath());
+
+		/*
+		 * double time= TerminalScreen.getTerminal1().getDuration().toSeconds();
+		 * task = new Timeline(
+		 * 
+		 * new KeyFrame(Duration.ZERO, new KeyValue(
+		 * mediaBar.progressProperty(), 0)),
+		 * 
+		 * 
+		 * new KeyFrame(Duration.seconds(time), new KeyValue(
+		 * mediaBar.progressProperty(), 1))
+		 * 
+		 * );
+		 * 
+		 * task.play();
+		 */
+
+		this.mediaProgressBar("terminal1");
+
 	}
 
 	@FXML
@@ -146,6 +187,52 @@ public class MultimediaController implements Initializable {
 		}
 	}
 
+	public void mediaProgressBar(String terminal) {
+
+		switch (terminal) {
+		case "terminal1":
+			mp = TerminalScreen.getTerminal1().getMediaPlayer();
+			break;
+
+		case "terminal2":
+			mp = TerminalScreen.getTerminal2().getMediaPlayer();
+			break;
+		case "terminal3":
+			mp = TerminalScreen.getTerminal3().getMediaPlayer();
+			break;
+
+		case "terminal4":
+			mp = TerminalScreen.getTerminal4().getMediaPlayer();
+			break;
+
+		default:
+			break;
+		}
+
+		mp.seek(Duration.ZERO);
+
+		mediaBar.setProgress(0);
+		ChangeListener<Duration> progressChangeListener = new ChangeListener<Duration>() {
+			@Override
+			public void changed(
+					ObservableValue<? extends Duration> observableValue,
+					Duration oldValue, Duration newValue) {
+				mediaBar.setProgress(1.0 * mp.getCurrentTime().toMillis()
+						/ mp.getTotalDuration().toMillis());
+			}
+		};
+		mp.currentTimeProperty().addListener(progressChangeListener);
+		mp.currentTimeProperty().addListener(new InvalidationListener() {
+			public void invalidated(Observable ov) {
+				mediaBarTime.setVisible(true);
+				mediaBarTime.setText(MediaControl.formatTime(
+						mp.getCurrentTime(), mp.getTotalDuration()));
+
+			}
+		});
+
+	}
+
 	public Main getMainApp() {
 		return mainApp;
 	}
@@ -155,4 +242,3 @@ public class MultimediaController implements Initializable {
 	}
 
 }
-

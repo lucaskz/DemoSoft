@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import model.MediaControl;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,13 +18,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 public class SubTerminalController implements Initializable {
 
 	private String MEDIA_URL="http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv";
 	private static String filename;
 	private static String arg1;
-	private Media media;
+	private MediaPlayer mediaPlayer;
+
 	
 	@FXML
 	private Pane contenido;
@@ -34,12 +38,15 @@ public class SubTerminalController implements Initializable {
 	public void setContenido(Pane contenido1) {
 		this.contenido = contenido1;
 	}
+	
+	public MediaPlayer getMediaPlayer(){
+		return this.mediaPlayer;
+	}
 
 	public void reproducirVideo() {
 		Media media = new Media((arg1 != null) ? arg1 : MEDIA_URL);
 		MediaPlayer mediaPlayer = new MediaPlayer(media);
 		mediaPlayer.setAutoPlay(true);
-
 		MediaControl mediaControl = new MediaControl(mediaPlayer);
 		contenido.getChildren().add(mediaControl);
 
@@ -47,11 +54,13 @@ public class SubTerminalController implements Initializable {
 	
 	public void reproducirCancion(String path){
 		File stream = new File(path);		
-    	this.media = new Media((arg1 != null) ? arg1 : stream.toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(this.media);
+    	Media media = new Media((arg1 != null) ? arg1 : stream.toURI().toString());
+		mediaPlayer = new MediaPlayer(media);	 
 		mediaPlayer.setAutoPlay(true);
 		MediaControl mediaControl = new MediaControl(mediaPlayer);
 		contenido.getChildren().add(mediaControl);
+		
+		
 	}
 
 	public String getMEDIA_URL() {
@@ -61,6 +70,7 @@ public class SubTerminalController implements Initializable {
 	public void setMEDIA_URL(String mEDIA_URL) {
 		MEDIA_URL = mEDIA_URL;
 	}
+
 
 
 

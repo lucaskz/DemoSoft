@@ -49,6 +49,22 @@ public class Terminal {
 			terminal4=t;
 		}
 		
+		public static SubTerminalController getTerminal1(){
+			return terminal1;
+		}
+		
+		public static SubTerminalController getTerminal2(){
+			return terminal1;
+		}
+		
+		public static SubTerminalController getTerminal3(){
+			return terminal1;
+		}
+		
+		public static SubTerminalController getTerminal4(){
+			return terminal1;
+		}
+		
 		
 		
 
@@ -101,7 +117,7 @@ public class Terminal {
 		
 		
 		public static void playSound(String path){
-			terminal2.reproducirCancion(path);
+			terminal1.reproducirCancion(path);
 		}
 
 
