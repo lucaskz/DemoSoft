@@ -1,19 +1,12 @@
 package controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
 import javax.sound.sampled.AudioFileFormat;
@@ -22,23 +15,17 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.apache.commons.io.FilenameUtils;
 
-import javazoom.spi.mpeg.sampled.file.MpegAudioFileReader;
 import model.Cancion;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.image.ImageView;
 
 
 public class Audio2Controller implements Initializable {
@@ -78,8 +65,6 @@ public class Audio2Controller implements Initializable {
 			boton.setUserData(act.get("canciones"));
 			boton.getStyleClass().add("playlist");
 			boton.setOnAction(this::loadPlaylist);
-
-
 			Label label = new Label((String) act.get("nombre"));
 			label.getStyleClass().add("item-title");
 			label.setLayoutX(x_label);
