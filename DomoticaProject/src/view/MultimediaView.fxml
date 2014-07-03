@@ -49,7 +49,7 @@
 			<children>
 				<ProgressBar fx:id="mediaBar" layoutX="196.0" layoutY="31.0" prefHeight="18.0" prefWidth="697.0" progress="0.0" />
 				<ImageView fitHeight="48.0" fitWidth="53.0" layoutX="21.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-				<Label layoutX="96.0" layoutY="31.0" text="Tema Actual">
+				<Label fx:id="label_temaActual" layoutX="96.0" layoutY="31.0" text="">
 					<styleClass>
 						<String fx:value="item-title" />
 						<String fx:value="word-white" />

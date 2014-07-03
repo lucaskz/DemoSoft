@@ -26,6 +26,8 @@ public class SubTerminalController implements Initializable {
 	private static String filename;
 	private static String arg1;
 	private MediaPlayer mediaPlayer;
+	
+	
 
 	
 	@FXML
@@ -41,6 +43,12 @@ public class SubTerminalController implements Initializable {
 	
 	public MediaPlayer getMediaPlayer(){
 		return this.mediaPlayer;
+	}
+	
+	String getFileName(){
+		
+		this.mediaPlayer.getMedia().getMetadata().get("algo");
+		return "hola";
 	}
 	
 	public MediaPlayer reproducirMedia(String path){

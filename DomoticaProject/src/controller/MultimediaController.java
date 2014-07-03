@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -23,6 +24,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
 import javafx.util.Duration;
@@ -76,6 +78,9 @@ public class MultimediaController implements Initializable {
 	
 	@FXML
 	private Label currentTerminal;
+	
+	@FXML
+	private Label label_temaActual;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -92,21 +97,26 @@ public class MultimediaController implements Initializable {
 		if(((ToggleButton) this.content.lookup("#terminal1")).isSelected()){
 			mp_actual=TerminalScreen.playMedia(cancion_selected.getPath(),"TERMINAL 1");
 			this.currentTerminal.setText("TERMINAL 1");
+			label_temaActual.setText(cancion_selected.getNombre());
 	   }
 		if(((ToggleButton) this.content.lookup("#terminal2")).isSelected()){
 			mp_actual=TerminalScreen.playMedia(cancion_selected.getPath(),"TERMINAl 2");
 			this.currentTerminal.setText("TERMINAL 2");
+			label_temaActual.setText(cancion_selected.getNombre());
 		}	
 		if(((ToggleButton) this.content.lookup("#terminal3")).isSelected()){
 			mp_actual=TerminalScreen.playMedia(cancion_selected.getPath(),"TERMINAL 3");
 			this.currentTerminal.setText("TERMINAL 3");
+			label_temaActual.setText(cancion_selected.getNombre());
 		}	
 		if(((ToggleButton) this.content.lookup("#terminal4")).isSelected()){
 			mp_actual=TerminalScreen.playMedia(cancion_selected.getPath(),"TERMINAL 4");
 			this.currentTerminal.setText("TERMINAL 4");
+			label_temaActual.setText(cancion_selected.getNombre());
 		}
 		if(mp_actual == null){
 			mp_actual=TerminalScreen.playMedia(cancion_selected.getPath(),this.currentTerminal.getText());
+			label_temaActual.setText(cancion_selected.getNombre());
 		}
 		
 		mediaBar.setProgress(0);
@@ -137,6 +147,8 @@ public class MultimediaController implements Initializable {
 	
 	public void PlayVideo(Video video,String terminal){
 		mp_actual=TerminalScreen.playMedia(video.getPath(),terminal);
+		
+		label_temaActual.setText(video.getNombre());
 		this.currentTerminal.setText(terminal);
 		mediaBar.setProgress(0);
 		progressChangeListener = new ChangeListener<Duration>() {
@@ -265,20 +277,23 @@ public class MultimediaController implements Initializable {
 		case "TERMINAL 1":
 			SubTerminalController terminal1= TerminalScreen.getTerminal1();
 			mp_actual = TerminalScreen.terminal1.getMediaPlayer();
+			
 			break;
 
 		case "TERMINAL 2":
 			SubTerminalController terminal2= TerminalScreen.getTerminal2();
 			mp_actual = TerminalScreen.terminal2.getMediaPlayer();
+			this.label_temaActual.setText(terminal2.getFileName());	
 			break;
 		case "TERMINAL 3":
 			SubTerminalController terminal3= TerminalScreen.getTerminal2();
-			mp_actual = TerminalScreen.terminal3.getMediaPlayer();
+			mp_actual = TerminalScreen.terminal3.getMediaPlayer();	
 			break;
 
 		case "TERMINAL 4":
 			SubTerminalController terminal4= TerminalScreen.getTerminal2();
 			mp_actual = TerminalScreen.terminal4.getMediaPlayer();
+			this.label_temaActual.setText(terminal4.getFileName());		
 			break;
 
 		default:
@@ -286,9 +301,11 @@ public class MultimediaController implements Initializable {
 		}
 		
 		if(mp_actual!=null){
-		
+
+		this.label_temaActual.setText( (new File( mp_actual.getMedia().getSource()).getName().replaceFirst("[.][^.]+$", "")));
 	//	if(TerminalScreen.terminal2.getMediaPlayer()!=null)
 	//	this.mediaProgressBar(this.currentTerminal.getText());
+		
 		progressChangeListener = new ChangeListener<Duration>() {
 			@Override
 			public void changed(
@@ -333,20 +350,24 @@ public class MultimediaController implements Initializable {
 		case "TERMINAL 1":
 			SubTerminalController terminal1= TerminalScreen.getTerminal1();
 			mp_actual = TerminalScreen.terminal1.getMediaPlayer();
+			this.label_temaActual.setText(terminal1.getFileName());	
 			break;
 
 		case "TERMINAL 2":
 			SubTerminalController terminal2= TerminalScreen.getTerminal2();
 			mp_actual = TerminalScreen.terminal2.getMediaPlayer();
+			this.label_temaActual.setText(terminal2.getFileName());	
 			break;
 		case "TERMINAL 3":
 			SubTerminalController terminal3= TerminalScreen.getTerminal2();
 			mp_actual = TerminalScreen.terminal3.getMediaPlayer();
+			this.label_temaActual.setText(terminal3.getFileName());	
 			break;
 
 		case "TERMINAL 4":
 			SubTerminalController terminal4= TerminalScreen.getTerminal2();
 			mp_actual = TerminalScreen.terminal4.getMediaPlayer();
+			this.label_temaActual.setText(terminal4.getFileName());	
 			break;
 
 		default:
@@ -355,6 +376,7 @@ public class MultimediaController implements Initializable {
 		
 
 		if(mp_actual!=null){
+			this.label_temaActual.setText( (new File( mp_actual.getMedia().getSource()).getName().replaceFirst("[.][^.]+$", "")));
 	//	if(TerminalScreen.terminal2.getMediaPlayer()!=null)
 	//	this.mediaProgressBar(this.currentTerminal.getText());
 		progressChangeListener = new ChangeListener<Duration>() {
