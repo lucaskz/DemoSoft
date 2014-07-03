@@ -49,7 +49,8 @@ public class Audio2Controller implements Initializable {
 		for (Iterator<HashMap<String, Object>> iterator = this.playlists.iterator(); iterator.hasNext();) {			
 			HashMap<String,Object> act =  iterator.next();
 			Button boton= new Button("");
-			String image = this.getClass().getResource("Cover.jpg").toExternalForm();
+			String dir=(String) act.get("imagen");
+			String image = this.getClass().getResource(dir).toExternalForm();
 			//Image img1 = new Image(getClass().getResourceAsStream("Cover.jpg"));
 			//Image img1 = new Image(getClass().getResourceAsStream("file:///Users/Lucas/git/DemoSoft/DomoticaProject/resources/musica/Benjamin/Cover.png"));
 //			if(act.get("imagen") != null){
@@ -160,8 +161,8 @@ public class Audio2Controller implements Initializable {
 						Cancion temp=new Cancion(s.getName().replaceFirst("[.][^.]+$", ""),(String)properties.get("album"),(float) (( ((Long) properties.get("duration")) / 1000000.0 )/  60.0),s.getPath());
 						canciones.add(temp);
 						}
-						if(ext.equals("png")){
-							playlist_actual.put("imagen", s);
+						if(ext.equals("jpg")|| ext.equals("png")){
+							playlist_actual.put("imagen", s.getPath());
 						}
 					} catch (UnsupportedAudioFileException e) {
 						// TODO Auto-generated catch block
