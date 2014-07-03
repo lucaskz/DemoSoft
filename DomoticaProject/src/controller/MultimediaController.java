@@ -1,6 +1,5 @@
 package controller;
 
-import java.beans.EventHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -8,29 +7,22 @@ import java.util.ResourceBundle;
 
 import model.Cancion;
 import model.MediaControl;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaPlayer.Status;
 import javafx.util.Duration;
 import application.Main;
 import application.Terminal.TerminalScreen;
@@ -38,6 +30,10 @@ import application.Terminal.TerminalScreen;
 public class MultimediaController implements Initializable {
 
 	private Main mainApp;
+	
+	private ChangeListener<Duration> progressChangeListener;
+	
+	private InvalidationListener progressChangeListener2;
 
 	private MediaPlayer mp;
 
@@ -67,36 +63,31 @@ public class MultimediaController implements Initializable {
 
 	@FXML
 	private Button play;
+	
+	@FXML
+	private Button previousTerminal;
+	
+	@FXML
+	private Button nextTerminal;
+	
+	@FXML
+	private Label currentTerminal;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 	}
-
+	
+	@FXML
 	public void PlayMedia(ActionEvent event) {
 		TableView<Cancion> Tabla = (TableView<Cancion>) content
 				.lookup("#table_playlist");
 		List<Cancion> tabla = Tabla.getSelectionModel().getSelectedItems();
 		Cancion cancion_selected = tabla.get(0);
-		TerminalScreen.playSound(cancion_selected.getPath());
+		mp=TerminalScreen.playSound(cancion_selected.getPath(),this.currentTerminal.getText());
 
-		/*
-		 * double time= TerminalScreen.getTerminal1().getDuration().toSeconds();
-		 * task = new Timeline(
-		 * 
-		 * new KeyFrame(Duration.ZERO, new KeyValue(
-		 * mediaBar.progressProperty(), 0)),
-		 * 
-		 * 
-		 * new KeyFrame(Duration.seconds(time), new KeyValue(
-		 * mediaBar.progressProperty(), 1))
-		 * 
-		 * );
-		 * 
-		 * task.play();
-		 */
-
-		this.mediaProgressBar("terminal1");
+		
+		this.mediaProgressBar(this.currentTerminal.getText());
 
 	}
 
@@ -186,33 +177,47 @@ public class MultimediaController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	@FXML
+	public void previousTerminal(ActionEvent event) {
+		mp.currentTimeProperty().removeListener(progressChangeListener2);
+		mp.currentTimeProperty().removeListener(progressChangeListener);
+		String currentTerminal=this.currentTerminal.getText();
+		
+		currentTerminal=currentTerminal.replaceAll("\\D+","");
+		if (!currentTerminal.equals("1"))
+			this.currentTerminal.setText("TERMINAL " + (Integer.parseInt(currentTerminal)-1));
 
-	public void mediaProgressBar(String terminal) {
-
-		switch (terminal) {
-		case "terminal1":
-			mp = TerminalScreen.getTerminal1().getMediaPlayer();
+		switch ("TERMINAL " + (Integer.parseInt(currentTerminal)-1)) {
+		case "TERMINAL 1":
+			SubTerminalController terminal1= TerminalScreen.getTerminal1();
+			mp = TerminalScreen.terminal1.getMediaPlayer();
 			break;
 
-		case "terminal2":
-			mp = TerminalScreen.getTerminal2().getMediaPlayer();
+		case "TERMINAL 2":
+			SubTerminalController terminal2= TerminalScreen.getTerminal2();
+			mp = TerminalScreen.terminal2.getMediaPlayer();
 			break;
-		case "terminal3":
-			mp = TerminalScreen.getTerminal3().getMediaPlayer();
+		case "TERMINAL 3":
+			SubTerminalController terminal3= TerminalScreen.getTerminal2();
+			mp = TerminalScreen.terminal3.getMediaPlayer();
 			break;
 
-		case "terminal4":
-			mp = TerminalScreen.getTerminal4().getMediaPlayer();
+		case "TERMINAL 4":
+			SubTerminalController terminal4= TerminalScreen.getTerminal2();
+			mp = TerminalScreen.terminal4.getMediaPlayer();
 			break;
 
 		default:
 			break;
 		}
-
-		mp.seek(Duration.ZERO);
-
-		mediaBar.setProgress(0);
-		ChangeListener<Duration> progressChangeListener = new ChangeListener<Duration>() {
+		
+		if(mp!=null){
+		
+	//	if(TerminalScreen.terminal2.getMediaPlayer()!=null)
+	//	this.mediaProgressBar(this.currentTerminal.getText());
+		progressChangeListener = new ChangeListener<Duration>() {
 			@Override
 			public void changed(
 					ObservableValue<? extends Duration> observableValue,
@@ -230,7 +235,129 @@ public class MultimediaController implements Initializable {
 
 			}
 		});
+	
+		}else{
+			mediaBar.setProgress(0);
+			mediaBarTime.setText("00:00");
+		}
+		
+	}
+	
+	
+	
+	@FXML
+	public void nextTerminal(ActionEvent event) {
+		mp.currentTimeProperty().removeListener(progressChangeListener2);
+		mp.currentTimeProperty().removeListener(progressChangeListener);
+		
+		String currentTerminal=this.currentTerminal.getText();
+		
+		currentTerminal=currentTerminal.replaceAll("\\D+","");
+		if (!currentTerminal.equals("4"))
+			this.currentTerminal.setText("TERMINAL " + (Integer.parseInt(currentTerminal)+1));
 
+		switch ("TERMINAL " + (Integer.parseInt(currentTerminal)+1)) {
+		case "TERMINAL 1":
+			SubTerminalController terminal1= TerminalScreen.getTerminal1();
+			mp = TerminalScreen.terminal1.getMediaPlayer();
+			break;
+
+		case "TERMINAL 2":
+			SubTerminalController terminal2= TerminalScreen.getTerminal2();
+			mp = TerminalScreen.terminal2.getMediaPlayer();
+			break;
+		case "TERMINAL 3":
+			SubTerminalController terminal3= TerminalScreen.getTerminal2();
+			mp = TerminalScreen.terminal3.getMediaPlayer();
+			break;
+
+		case "TERMINAL 4":
+			SubTerminalController terminal4= TerminalScreen.getTerminal2();
+			mp = TerminalScreen.terminal4.getMediaPlayer();
+			break;
+
+		default:
+			break;
+		}
+		
+
+		if(mp!=null){
+	//	if(TerminalScreen.terminal2.getMediaPlayer()!=null)
+	//	this.mediaProgressBar(this.currentTerminal.getText());
+		progressChangeListener = new ChangeListener<Duration>() {
+			@Override
+			public void changed(
+					ObservableValue<? extends Duration> observableValue,
+					Duration oldValue, Duration newValue) {
+				mediaBar.setProgress(1.0 * mp.getCurrentTime().toMillis()
+						/ mp.getTotalDuration().toMillis());
+			}
+		};
+		mp.currentTimeProperty().addListener(progressChangeListener);
+		mp.currentTimeProperty().addListener(new InvalidationListener() {
+			public void invalidated(Observable ov) {
+				mediaBarTime.setVisible(true);
+				mediaBarTime.setText(MediaControl.formatTime(
+						mp.getCurrentTime(), mp.getTotalDuration()));
+
+			}
+		});
+		}
+		else{
+			mediaBar.setProgress(0);
+			mediaBarTime.setText("00:00");
+		}
+	
+	}
+	
+	
+
+	public void mediaProgressBar(String terminal) {
+		
+
+
+		switch (terminal) {
+		case "TERMINAL 1":
+			SubTerminalController terminal1= TerminalScreen.getTerminal1();
+			mp = TerminalScreen.terminal1.getMediaPlayer();
+			break;
+
+		case "TERMINAL 2":
+			SubTerminalController terminal2= TerminalScreen.getTerminal2();
+			mp = TerminalScreen.terminal2.getMediaPlayer();
+			break;
+		case "TERMINAL 3":
+			mp = TerminalScreen.terminal3.getMediaPlayer();
+			break;
+
+		case "TERMINAL 4":
+			mp = TerminalScreen.terminal4.getMediaPlayer();
+			break;
+
+		default:
+			break;
+		}		
+
+		mediaBar.setProgress(0);
+		progressChangeListener = new ChangeListener<Duration>() {
+			@Override
+			public void changed(
+					ObservableValue<? extends Duration> observableValue,
+					Duration oldValue, Duration newValue) {
+				mediaBar.setProgress(1.0 * mp.getCurrentTime().toMillis()
+						/ mp.getTotalDuration().toMillis());
+			}
+		};
+		mp.currentTimeProperty().addListener(progressChangeListener);
+		progressChangeListener2 = new InvalidationListener() {
+			public void invalidated(Observable ov) {
+				mediaBarTime.setVisible(true);
+				mediaBarTime.setText(MediaControl.formatTime(mp.getCurrentTime(), mp.getTotalDuration()));
+
+			}
+		};
+		mp.currentTimeProperty().addListener(progressChangeListener2);
+	
 	}
 
 	public Main getMainApp() {

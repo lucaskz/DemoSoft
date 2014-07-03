@@ -15,10 +15,10 @@ public class Terminal {
 
 	public static class TerminalScreen extends Application {
 		
-		private static SubTerminalController terminal1;
-		private static SubTerminalController terminal2;
-		private static SubTerminalController terminal3;
-		private static SubTerminalController terminal4;
+		public static SubTerminalController terminal1;
+		public static SubTerminalController terminal2;
+		public static SubTerminalController terminal3;
+		public static SubTerminalController terminal4;
 		
 		
 
@@ -54,15 +54,15 @@ public class Terminal {
 		}
 		
 		public static SubTerminalController getTerminal2(){
-			return terminal1;
+			return terminal2;
 		}
 		
 		public static SubTerminalController getTerminal3(){
-			return terminal1;
+			return terminal3;
 		}
 		
 		public static SubTerminalController getTerminal4(){
-			return terminal1;
+			return terminal4;
 		}
 		
 		
@@ -116,8 +116,22 @@ public class Terminal {
 		}
 		
 		
-		public static void playSound(String path){
-			terminal1.reproducirCancion(path);
+		public static MediaPlayer playSound(String path, String terminal){
+			switch (terminal) {
+			case "TERMINAL 1":
+				return terminal1.reproducirCancion(path);
+			case "TERMINAL 2":
+				return terminal2.reproducirCancion(path);
+			case "TERMINAL 3":
+				return terminal3.reproducirCancion(path);
+			case "TERMINAL 4":
+				return terminal4.reproducirCancion(path);
+			default:
+				break;
+			}
+			return null;
+			
+			
 		}
 
 

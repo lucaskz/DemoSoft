@@ -52,13 +52,14 @@ public class SubTerminalController implements Initializable {
 
 	}
 	
-	public void reproducirCancion(String path){
+	public MediaPlayer reproducirCancion(String path){
 		File stream = new File(path);		
     	Media media = new Media((arg1 != null) ? arg1 : stream.toURI().toString());
 		mediaPlayer = new MediaPlayer(media);	 
 		mediaPlayer.setAutoPlay(true);
 		MediaControl mediaControl = new MediaControl(mediaPlayer);
 		contenido.getChildren().add(mediaControl);
+		return this.mediaPlayer;
 		
 		
 	}

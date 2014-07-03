@@ -41,7 +41,7 @@
 			</children>
 		</AnchorPane>
 		<AnchorPane fx:id="content" layoutX="120.0" prefHeight="800.0" prefWidth="1161.0" />
-		<AnchorPane fx:id="playbar" layoutY="721.0" prefHeight="79.0" prefWidth="1280.0" style="-fx-background-color: #191919 !important;" styleClass="grey">
+		<AnchorPane fx:id="playbar" layoutY="721.0" prefHeight="84.0" prefWidth="1288.0" style="-fx-background-color: #191919 !important;" styleClass="grey">
 			<children>
 				<ProgressBar fx:id="mediaBar" layoutX="196.0" layoutY="31.0" prefHeight="18.0" prefWidth="697.0" progress="0.0" />
 				<ImageView fitHeight="48.0" fitWidth="53.0" layoutX="21.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
@@ -60,9 +60,9 @@
 						<String fx:value="word-white" />
 					</styleClass>
 				</Label>
-            <Button layoutX="1121.0" layoutY="27.0" mnemonicParsing="false" text="&lt;" />
-            <Button layoutX="1241.0" layoutY="27.0" mnemonicParsing="false" text="&gt;" />
-            <Label layoutX="1166.0" layoutY="34.0" text="MONTIOR 1" textFill="WHITE" />
+            <Button fx:id="previousTerminal" layoutX="1121.0" layoutY="27.0" mnemonicParsing="false" onAction="#previousTerminal" text="&lt;" />
+            <Button fx:id="nextTerminal" layoutX="1242.0" layoutY="27.0" mnemonicParsing="false" onAction="#nextTerminal" text="&gt;" />
+            <Label fx:id="currentTerminal" layoutX="1159.0" layoutY="32.0" text="TERMINAL 1" textFill="WHITE" />
 			</children>
 		</AnchorPane>
 	</children>
