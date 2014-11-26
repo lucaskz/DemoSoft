@@ -137,7 +137,7 @@ public class Video1Controller implements Initializable {
 			boton.setLayoutX(x);
 			boton.setLayoutY(y);
 			boton.setUserData(act);
-			boton.getStyleClass().add("playlist");
+			boton.getStyleClass().add("videoList");
 			boton.setOnAction(this::loadVideo);
 			Label label = new Label(act.getNombre());
 			label.getStyleClass().add("item-title");

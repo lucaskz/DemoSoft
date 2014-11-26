@@ -92,6 +92,13 @@
                   <String fx:value="settings" />
                </styleClass>
             </Button>
+            <Label layoutX="1024.0" layoutY="305.0" style="-fx-font-size: 22pt;" styleClass="letras_lindas" text="Correo de Voz" />
+            <Label layoutX="966.0" layoutY="358.0" styleClass="letras_lindas" text="0" />
+            <Label layoutX="651.0" layoutY="288.0" style="-fx-font-size: 40pt;" styleClass="letras_lindas" text="15º" />
+            <Label layoutX="734.0" layoutY="327.0" styleClass="letras_lindas" text="Soleado" />
+            <Label layoutX="194.0" layoutY="305.0" style="-fx-font-size: 22pt;" styleClass="letras_lindas" text="Control Lumínico" />
+            <Label layoutX="239.0" layoutY="538.0" style="-fx-font-size: 42pt;" styleClass="letras_lindas" text="7" />
+            <Label layoutX="286.0" layoutY="562.0" style="-fx-font-size: 18pt;" styleClass="letras_lindas" text="Julio" />
          </children>
       </Pane>
    </children>

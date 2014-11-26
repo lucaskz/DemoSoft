@@ -19,12 +19,12 @@
 		<Button fx:id="button_back" layoutX="41.0" layoutY="35.0" mnemonicParsing="false" onAction="#backMenu" prefHeight="34.0" prefWidth="34.0" styleClass="back_black" />
 		<ImageView fx:id="cover" fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" style="-fx-border: 1;" />
 		<AnchorPane fx:id="reproductor" layoutX="220.0" layoutY="261.0" prefHeight="330.0" prefWidth="475.0" />
-      		<AnchorPane layoutX="1067.0" prefHeight="722.0" prefWidth="94.0"  styleClass="yellow">
+      		<AnchorPane layoutX="1067.0" prefHeight="722.0" prefWidth="94.0" styleClass="yellow">
 			<children>
-				<ToggleButton fx:id="terminal4" layoutX="36.0" layoutY="489.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="42.0"  text="4" />
-				<ToggleButton fx:id="terminal3" layoutX="36.0" layoutY="402.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="42.0"  text="3" />
+				<ToggleButton fx:id="terminal4" layoutX="26.0" layoutY="489.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="42.0" text="4" />
+				<ToggleButton fx:id="terminal3" layoutX="26.0" layoutY="402.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="42.0" text="3" />
 				<ToggleButton fx:id="terminal1" layoutX="26.0" layoutY="231.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="42.0" text="1" />
-				<ToggleButton fx:id="terminal2" layoutX="36.0" layoutY="327.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="42.0"  text="2" />
+				<ToggleButton fx:id="terminal2" layoutX="26.0" layoutY="327.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="42.0" text="2" />
 			</children>
 		</AnchorPane>
 	</children>
